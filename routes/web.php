@@ -4,14 +4,27 @@ use App\Http\Controllers\admin\AdminCalendarController;
 use App\Http\Controllers\admin\ContentCOntroller;
 use App\Http\Controllers\admin\StudentsController;
 use App\Http\Controllers\clerk\FinanceController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\student\StudentAccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('theme.index');
-});
+// Route::get('/', function () {
+//     return view('theme.index');
+// });
+Route::get('/', [PagesController::class, 'index']);
+Route::get('/job-list', [PagesController::class, 'jobList'])->name('job-list');
+Route::get('/job-single-page', [PagesController::class, 'jobSinglePage'])->name('job-single-page');
+Route::get('/employer-list', [PagesController::class, 'employers'])->name('employer-list');
+Route::get('/employer-single-pange', [PagesController::class, 'employerSinglepage'])->name('employer-single-pange');
+Route::get('/employer-dashboard', [PagesController::class, 'employerDashboard'])->name('employer-dashboard');
+
+//candidates
+Route::get('/candidate-list', [PagesController::class, 'candidates'])->name('candidate-list');
+Route::get('/candidate-single-pange', [PagesController::class, 'candidateSinglepage'])->name('candidate-single-pange');
+Route::get('/candidate-dashboard', [PagesController::class, 'candidateDashboard'])->name('candidate-dashboard');
+
 Route::get('/logoutchecked', function (Request $request) {
     $request->session()->flush();
     Auth::logout();

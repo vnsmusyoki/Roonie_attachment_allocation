@@ -57,7 +57,7 @@
                         <!-- Info BLock One -->
                         <div class="info_block anm wow fadeIn" data-wow-delay="1000ms" data-speed-x="2" data-speed-y="2">
                             <span class="icon flaticon-email-3"></span>
-                            <p>Work Inquiry From <br>Ali Tufan</p>
+                            <p>Attachment Inquiry From <br>Legit Companies</p>
                         </div>
 
                         <!-- Info BLock Two -->
