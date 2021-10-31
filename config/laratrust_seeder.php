@@ -17,16 +17,13 @@ return [
             'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'cdf' => [
+        'employer' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'school' => [
-            'profile' => 'r,u',
-        ],
         'student' => [
             'profile' => 'r,u',
-        ], 
+        ],
         'role_name' => [
             'module_1_name' => 'c,r,u,d',
         ]

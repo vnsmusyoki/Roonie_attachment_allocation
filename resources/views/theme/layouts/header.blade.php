@@ -39,7 +39,7 @@
             <!--Nav Outer -->
             <div class="nav-outer">
                 <div class="logo-box">
-                    <div class="logo"><a href="/"><img src="{{asset('frontend/images/attach_logo.png')}}" alt="" title=""></a></div>
+                    <div class="logo"><a href="/"><img src="{{asset('frontend/images/attachment_logo.png')}}" alt="" title=""></a></div>
                 </div>
 
                 <nav class="nav main-menu">
@@ -86,7 +86,7 @@
                                         <li><a href="employers-single-v3.html">Employers Single v3</a></li> --}}
                                     </ul>
                                 </li>
-                                <li><a href="{{route('employer-dashboard')}}">Employers Dashboard</a></li>
+                                <li><a href="{{route('employer')}}">Employers Dashboard</a></li>
                             </ul>
                         </li>
 
@@ -181,15 +181,15 @@
                     @guest
                         @if (Route::has('login'))
 
-                                <a class="theme-btn btn-style-three" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="theme-btn btn-style-three" href="{{ route('login') }}">{{ __('My Account') }}</a>
 
                         @endif
 
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
 
                                 <a class="theme-btn btn-style-three" href="{{ route('register') }}">{{ __('Register') }}</a>
 
-                        @endif
+                        @endif --}}
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="theme-btn btn-style-three dropdown-toggle" href="#" role="button"
@@ -217,7 +217,7 @@
 
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <div class="logo"><a href="index.html"><img src="{{asset('frontend/images/logo.svg')}}" alt="" title=""></a></div>
+            <div class="logo"><a href="/"><img src="{{asset('frontend/images/logo.svg')}}" alt="" title=""></a></div>
 
             <!--Nav Box-->
             <div class="nav-outer clearfix">

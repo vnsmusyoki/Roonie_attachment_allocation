@@ -27,87 +27,114 @@
 <body>
     <div class="container d-flex flex-column">
         <div class="row align-items-center justify-content-center g-0 min-vh-100">
-            <div class="col-lg-5 col-md-8 py-8 py-xl-0">
+            <div class="col-lg-12 col-md-8 py-8 py-xl-0">
                 <!-- Card -->
                 <div class="card shadow ">
-                    <!-- Card body -->
-                    <div class="card-body p-6">
-                        <div class="mb-4 d-flex justify-content-center"
-                            style="flex-direction: column;align-items:center;">
-                            <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo-icon.svg') }}"
-                                    class="mb-4" alt=""></a>
-                            <h1 class="mb-1 fw-bold">Sign in</h1>
-                            <span>Return back to home screen? <a href="{{ url('/') }}" class="ms-1">Click
-                                    Here</a></span>
-                        </div>
-                        <!-- Form -->
-                        @if (session('passwordreset'))
-                            {{ Toastr::warning(session('passwordreset'), '', ['positionClass' => 'toast-top-right', 'progressBar' => true, 'showMethod' => 'fadeIn', 'hideMethod' => 'fadeOut','preventDuplicates'=>true]) }}
-                        @endif
-                        <form method="POST" action="{{ route('login') }}" autocomplete="off">
-                            @csrf
-                            <!-- Username -->
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" class="form-control" name="email"
-                                    placeholder="Enter valid Email address here" value="{{ old('email') }}">
-                                @error('email')
-                                    <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                            </div>
-                            <!-- Password -->
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" class="form-control" name="password"
-                                    placeholder="**************">
-                                @error('password')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <!-- Checkbox -->
-                            <div class="d-lg-flex justify-content-between align-items-center mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="rememberme">
-                                    <label class="form-check-label " for="rememberme">Remember me</label>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- Card body -->
+                            <div class="card-body p-6">
+                                <div class="mb-4 d-flex justify-content-center" style="flex-direction: column;align-items:center;">
+                                    <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo-icon.svg') }}" class="mb-4" alt=""></a>
+                                    <h1 class="mb-1 fw-bold">Sign in</h1>
+                                    <span>Return back to home screen? <a href="{{ url('/') }}" class="ms-1">Click
+                                            Here</a></span>
                                 </div>
-                                <div>
-                                    @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
+                                <!-- Form -->
+                                @if (session('passwordreset'))
+                                {{ Toastr::warning(session('passwordreset'), '', ['positionClass' => 'toast-top-right', 'progressBar' => true,
+                                'showMethod' => 'fadeIn', 'hideMethod' => 'fadeOut','preventDuplicates'=>true]) }}
+                                @endif
+                                <form method="POST" action="{{ route('login') }}" autocomplete="off">
+                                    @csrf
+                                    <!-- Username -->
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" id="email" class="form-control" name="email"
+                                            placeholder="Enter valid Email address here" value="{{ old('email') }}">
+                                        @error('email')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                        @enderror
+                                    </div>
+                                    <!-- Password -->
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" id="password" class="form-control" name="password" placeholder="**************">
+                                        @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <!-- Checkbox -->
+                                    <div class="d-lg-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="rememberme">
+                                            <label class="form-check-label " for="rememberme">Remember me</label>
+                                        </div>
+                                        <div>
+                                            @if (Route::has('password.request'))
+                                            <a href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                                            </a>
+                                            @endif
 
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <!-- Button -->
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-login btn-block">Sign in</button>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="mt-4 text-center">
+                                        <!--Facebook-->
+                                        <a href="#" class="btn-social btn-social-outline ">
+                                            <i class="bi bi-house"></i>
+                                        </a>
+                                        <!--Twitter-->
+                                        <a href="#" class="btn-social btn-social-outline  ">
+                                            <i class="bi bi-twitter"></i>
+                                        </a>
+                                        <!--LinkedIn-->
+                                        <a href="#" class="btn-social btn-social-outline  ">
+                                            <i class="bi bi-facebook"></i>
+                                        </a>
+                                        <!--GitHub-->
+                                        <a href="#" class="btn-social btn-social-outline  ">
+                                            <i class="bi bi-whatsapp"></i>
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- Card body -->
+                            <div class="card-body p-6">
+
+                                <div class="mb-4 d-flex justify-content-center" style="flex-direction: column;align-items:center;">
+                                    <img src="{{ asset('assets/images/logo-icon.svg') }}" class="mb-4" alt="">
+                                    <h1 class="mb-1 fw-bold">Register</h1>
+                                    <h6>Register as an employer or a candidate</h6>
+                                    <span>Return back to home screen? <a href="{{ url('/') }}" class="ms-1">Click
+                                            Here</a></span>
+
+                                    <div class="row p-20">
+                                        <div class="col-sm-6">
+                                            <a href="{{ route('register.candidate') }}" class="btn btn-primary">Candidate</a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href="{{ route('register.employer') }}" class="btn btn-warning">Employer</a>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </div>
-                            <div>
-                                <!-- Button -->
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-login btn-block">Sign in</button>
-                                </div>
-                            </div>
-                            <hr class="my-4">
-                            <div class="mt-4 text-center">
-                                <!--Facebook-->
-                                <a href="#" class="btn-social btn-social-outline ">
-                                    <i class="bi bi-house"></i>
-                                </a>
-                                <!--Twitter-->
-                                <a href="#" class="btn-social btn-social-outline  ">
-                                    <i class="bi bi-twitter"></i>
-                                </a>
-                                <!--LinkedIn-->
-                                <a href="#" class="btn-social btn-social-outline  ">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <!--GitHub-->
-                                <a href="#" class="btn-social btn-social-outline  ">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

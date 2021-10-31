@@ -82,7 +82,7 @@
 <!-- Mirrored from creativelayers.net/themes/superio/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Oct 2021 06:36:53 GMT -->
 <head>
 <meta charset="utf-8">
-<title>Superio | Just another HTML Template | Register</title>
+<title>Employer Register</title>
 
 <!-- Stylesheets -->
 <link href="{{asset('frontend/css/bootstrap.css')}}" rel="stylesheet">
