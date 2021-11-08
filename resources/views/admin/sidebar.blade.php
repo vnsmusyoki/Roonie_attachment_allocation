@@ -41,6 +41,18 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('category.index')}}">
+                    <i class="icon-Briefcase"><span class="path1"></span><span class="path2"></span></i>
+                    <span>Jobs Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('category.create')}}">
+                    <i class="icon-Briefcase"><span class="path1"></span><span class="path2"></span></i>
+                    <span>Create New Categories</span>
+                </a>
+            </li>
+            <li>
                 <a href="jobs.html">
                     <i class="icon-Briefcase"><span class="path1"></span><span class="path2"></span></i>
                     <span>Jobs</span>

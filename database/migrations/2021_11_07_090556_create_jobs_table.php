@@ -26,6 +26,7 @@ class CreateJobsTable extends Migration
             $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->enum('status',['active','deactive'])->default('active');
+            $table->integer('company_id');
             $table->timestamps();
         });
     }

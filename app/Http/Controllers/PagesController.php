@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     public function index(){
-        return view('theme.index');
+        $jobs = Job::all()->take(6);
+        // $posts = Job::where('status','active')->count();
+        $categories=Category::all()->take(9);
+        return view('theme.index', compact('jobs','categories'));
     }
     public function jobList()
     {
-        return view('theme.job_list');
+        $jobs = Job::where('status','active')->paginate(36);
+        return view('theme.job_list',compact('jobs'));
     }
-    public function jobSinglePage()
+    public function jobSinglePage($id)
     {
-        return view('theme.job_single_page');
+        $job = Job::find($id);
+        return view('theme.job_single_page',compact('job'));
     }
 
     public function employers(){

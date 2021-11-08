@@ -55,12 +55,12 @@
                                             <li><a href="{{route('job-list')}}">Jobs List</a></li>
                                         </ul>
                                     </div>
-                                    <div class="column col-lg-3 col-md-3 col-sm-12">
+                                    {{-- <div class="column col-lg-3 col-md-3 col-sm-12">
                                         <h3>Jobs Single</h3>
                                         <ul>
-                                            <li><a href="{{route('job-single-page')}}">Job Single</a></li>
+                                            <li><a href="{{route('job-single-page',)}}">Job Single</a></li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </li>

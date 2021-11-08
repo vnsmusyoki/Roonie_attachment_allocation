@@ -15,6 +15,9 @@ class Company extends Model
         'logo','cover','company_name','company_email','phone',
         'website_name','team_size','category','country','city',
         'logitude','latitude','about_company','facebook_link',
-        'twitter_link','address'
+        'twitter_link','address','user_id'
     ];
+    public function job(){
+       return $this->hasMany(Job::class);
+    }
 }

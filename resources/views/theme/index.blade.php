@@ -99,104 +99,18 @@
 
             <div class="row wow fadeInUp">
                 <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-money-1"></span>
-                            <h4><a href="#">Accounting / Finance</a></h4>
-                            <p>(2 open positions)</p>
+                @foreach ($categories as $cat)
+                    <div class="category-block col-lg-4 col-md-6 col-sm-12">
+                        <div class="inner-box">
+                            <div class="content">
+                                <span class="icon flaticon-money-1"></span>
+                                <h4><a href="#">{{$cat->name}}</a></h4>
+                                {{-- <p>(2 open positions)</p> --}}
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-promotion"></span>
-                            <h4><a href="#">Marketing</a></h4>
-                            <p>86 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-vector"></span>
-                            <h4><a href="#">Design</a></h4>
-                            <p>43 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-web-programming"></span>
-                            <h4><a href="#">Development</a></h4>
-                            <p>(12 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-headhunting"></span>
-                            <h4><a href="#">Human Resource</a></h4>
-                            <p>55 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-rocket-ship"></span>
-                            <h4><a href="#">Project Management</a></h4>
-                            <p>(2 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-support-1"></span>
-                            <h4><a href="#">Customer Service</a></h4>
-                            <p>(2 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-first-aid-kit-1"></span>
-                            <h4><a href="#">Health and Care</a></h4>
-                            <p>(25 open positions)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="icon flaticon-car"></span>
-                            <h4><a href="#">Automotive Jobs</a></h4>
-                            <p>92 open positions</p>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
+              
             </div>
         </div>
     </section>
@@ -212,140 +126,32 @@
 
             <div class="row wow fadeInUp">
                 <!-- Job Block -->
-                <div class="job-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/1-1.png')}}" alt=""></span>
-                            <h4><a href="#">Software Engineer (Android), Libraries</a></h4>
-                            <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
-                            </ul>
-                            <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
-                            </ul>
-                            <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
+                @foreach ($jobs as $job)
+                    <div class="job-block col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner-box">
+                            <div class="content">
+                                <span class="company-logo"><img src="{{asset('storage/'.$job->image)}}" alt="" width="54" height="53"></span>
+                                <h4><a href="{{route('job-single-page',$job->id)}}">{{$job->job_title}}</a></h4>
+                                <ul class="job-info">
+                                    <li><span class="icon flaticon-briefcase"></span> Job Category:{{$job->job_category}}</li>
+                                    {{-- <li><span class="icon flaticon-map-locator"></span>Job Category: {{$job->job_title}}</li> --}}
+                                    <li><span class="icon flaticon-clock-3"></span>Location:  {{$job->address}}</li>
+                                    <li><span class="icon flaticon-money"></span> Salary: {{$job->salary}}</li>
+                                </ul>
+                                <ul class="job-other-info">
+                                    <li class="time">3-4 Months</li>
+                                    <li class="privacy">Urgent</li>
+                                    <li class="required">{{$job->status}}</li>
+                                </ul>
+                                <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Job Block -->
-                <div class="job-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/1-2.png')}}" alt=""></span>
-                            <h4><a href="#">Recruiting Coordinator</a></h4>
-                            <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
-                            </ul>
-                            <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
-                            </ul>
-                            <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Job Block -->
-                <div class="job-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/1-3.png')}}" alt=""></span>
-                            <h4><a href="#">Product Manager, Studio</a></h4>
-                            <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
-                            </ul>
-                            <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
-                            </ul>
-                            <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Job Block -->
-                <div class="job-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/1-4.png')}}" alt=""></span>
-                            <h4><a href="#">Senior Product Designer</a></h4>
-                            <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
-                            </ul>
-                            <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
-                            </ul>
-                            <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Job Block -->
-                <div class="job-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/1-5.png')}}" alt=""></span>
-                            <h4><a href="#">Senior Full Stack Engineer, Creator Success</a></h4>
-                            <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
-                            </ul>
-                            <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
-                            </ul>
-                            <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Job Block -->
-                <div class="job-block col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/1-6.png')}}" alt=""></span>
-                            <h4><a href="#">Software Engineer (Android), Libraries</a></h4>
-                            <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
-                            </ul>
-                            <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
-                            </ul>
-                            <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <div class="btn-box">
-                <a href="#" class="theme-btn btn-style-one bg-blue"><span class="btn-title">Load More Listing</span></a>
+                <a href="{{route('job-list')}}" class="theme-btn btn-style-one bg-blue"><span class="btn-title">Load More Listing</span></a>
             </div>
         </div>
     </section>

@@ -36,9 +36,10 @@
                                         <h5>Confirmation</h5>
                                     </div>
                                 </div>
-                                {!! Toastr::message() !!}
 
-                                <form class="default-form" action="{{route('manage.store')}}" method="POST">
+                                @include('sweetalert::alert')
+
+                                <form class="default-form" action="{{route('manage.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <!-- Input -->
@@ -46,6 +47,14 @@
                                             <label>Job Title</label>
                                             <input type="text" name="job_title" placeholder="Title" class="@error('job_title') is-invalid @enderror">
                                             @error('job_title')
+                                            <div class="alert alert-danger">{{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-lg-12 col-md-12">
+                                            <label>company logo</label>
+                                           <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
+                                            @error('image')
                                             <div class="alert alert-danger">{{ $message }}
                                             </div>
                                             @enderror
@@ -60,13 +69,16 @@
 
 
                                         <div class="form-group col-lg-6 col-md-12">
-                                            <label>Job Type</label>
+                                            <label>Job Category</label>
                                             <select class="chosen-select @error('job_category') is-invalid @enderror" name="job_category">
-                                                <option value="">Select</option>
-                                                <option value="Developers">Developers</option>
-                                                <option value="Designer">Designer</option>
-                                                <option value="Finance Expert">Finance Expert</option>
-                                                <option value="Project Manager">Project Manager</option>
+                                                <option value="">Select Category</option>
+                                                @foreach ($categories as $procat)
+                                                <option value="{{$procat->name}}" name="job_category">{{$procat->name}}</option>
+                                                @endforeach
+                                               
+                                                {{-- @foreach($categories as $country)
+                                                    <option value="{{ $country->name }}" >{{ $country->name }}</option>
+                                                @endforeach --}}
                                             </select>
                                             @error('job_category')
                                             <div class="alert alert-danger">{{ $message }}

@@ -440,6 +440,15 @@
 <script src="{{ asset('main/main/js/pages/dashboard.js')}}"></script>
 <script src="{{ asset('main/main/js/pages/calendar-dash.js')}}"></script>
 
+{{-- message toaster --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+@if(Session::has('category_created'))
+    <script>
+        toastr.success("{!! Session::get('category_created') !!}");
+    </script>
+@endif
+
 </body>
 
 <!-- Mirrored from joblly-admin-template-dashboard.multipurposethemes.com/bs4/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:27:04 GMT -->

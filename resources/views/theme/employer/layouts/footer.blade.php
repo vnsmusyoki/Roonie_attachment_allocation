@@ -19,6 +19,26 @@
 <script src="{{asset('frontend/js/owl.js')}}"></script>
 <script src="{{asset('frontend/js/wow.js')}}"></script>
 <script src="{{asset('frontend/js/script.js')}}"></script>
+{{-- message toaster --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+@if(Session::has('job_created'))
+    <script>
+        toastr.success("{!! Session::get('job_created') !!}");
+    </script>
+@endif
+@if(Session::has('company_created'))
+    <script>
+        toastr.success("{!! Session::get('company_created') !!}");
+    </script>
+@endif
+@if(Session::has('error'))
+    <script>
+        toastr.error("{!! Session::get('error') !!}");
+    </script>
+@endif
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 <!-- Chart.js // documentation: http://www.chartjs.org/docs/latest/ -->
 <script src="{{asset('frontend/js/chart.min.js')}}"></script>
@@ -94,43 +114,7 @@
 
 </script>
 
-<script>
-    @if(Session::has('message'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.success("{{ session('message') }}");
-    @endif
 
-    @if(Session::has('error'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.error("{{ session('error') }}");
-    @endif
-
-    @if(Session::has('info'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.info("{{ session('info') }}");
-    @endif
-
-    @if(Session::has('warning'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.warning("{{ session('warning') }}");
-    @endif
-  </script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

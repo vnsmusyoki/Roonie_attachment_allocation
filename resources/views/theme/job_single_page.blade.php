@@ -11,18 +11,17 @@
                 <div class="job-block-seven">
                     <div class="inner-box">
                         <div class="content">
-                            <span class="company-logo"><img src="{{asset('frontend/images/resource/company-logo/5-1.png')}}" alt=""></span>
-                            <h4><a href="#">Product Designer / UI Designer</a></h4>
+                            <span class="company-logo"><img src="{{asset('storage/'.$job->image)}}" alt=""></span>
+                            <h4><a href="#">{{$job->job_title}}</a></h4>
                             <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Segment</li>
-                                <li><span class="icon flaticon-map-locator"></span> London, UK</li>
-                                <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li>
-                                <li><span class="icon flaticon-money"></span> $35k - $45k</li>
+                                <li><span class="icon flaticon-briefcase"></span> Job Category:{{$job->job_category}}</li>
+                                <li><span class="icon flaticon-map-locator"></span> Location:  {{$job->address}}</li>
+                                <li><span class="icon flaticon-money"></span> Salary: {{$job->salary}}</li>
                             </ul>
                             <ul class="job-other-info">
-                                <li class="time">Full Time</li>
-                                <li class="privacy">Private</li>
-                                <li class="required">Urgent</li>
+                                <li class="time">3-4 Months</li>
+                                <li class="privacy">Urgent</li>
+                                <li class="required">{{$job->status}}</li>
                             </ul>
                         </div>
 
@@ -41,25 +40,9 @@
                     <div class="content-column col-lg-8 col-md-12 col-sm-12">
                         <div class="job-detail">
                             <h4>Job Description</h4>
-                            <p>As a Product Designer, you will work within a Product Delivery Team fused with UX, engineering, product and data talent. You will help the team design beautiful interfaces that solve business challenges for our clients. We work with a number of Tier 1 banks on building web-based applications for AML, KYC and Sanctions List management workflows. This role is ideal if you are looking to segue your career into the FinTech or Big Data arenas.</p>
-                            <h4>Key Responsibilities</h4>
-                            <ul class="list-style-three">
-                                <li>Be involved in every step of the product design cycle from discovery to developer handoff and user acceptance testing.</li>
-                                <li>Work with BAs, product managers and tech teams to lead the Product Design</li>
-                                <li>Maintain quality of the design process and ensure that when designs are translated into code they accurately reflect the design specifications.</li>
-                                <li>Accurately estimate design tickets during planning sessions.</li>
-                                <li>Contribute to sketching sessions involving non-designersCreate, iterate and maintain UI deliverables including sketch files, style guides, high fidelity prototypes, micro interaction specifications and pattern libraries.</li>
-                                <li>Ensure design choices are data led by identifying assumptions to test each sprint, and work with the analysts in your team to plan moderated usability test sessions.</li>
-                                <li>Design pixel perfect responsive UI’s and understand that adopting common interface patterns is better for UX than reinventing the wheel</li>
-                                <li>Present your work to the wider business at Show & Tell sessions.</li>
-                            </ul>
+                            <p>{{$job->job_description}}</p>
                             <h4>Skill & Experience</h4>
-                            <ul class="list-style-three">
-                                <li>You have at least 3 years’ experience working as a Product Designer.</li>
-                                <li>You have experience using Sketch and InVision or Framer X</li>
-                                <li>You have some previous experience working in an agile environment – Think two-week sprints.</li>
-                                <li>You are familiar using Jira and Confluence in your workflow</li>
-                            </ul>
+                            <p>{{$job->qualification}}</p>
                         </div>
 
                         <!-- Other Options -->
@@ -157,44 +140,44 @@
                                     <ul class="job-overview">
                                         <li>
                                             <i class="icon icon-calendar"></i>
-                                            <h5>Date Posted:</h5>
-                                            <span>Posted 1 hours ago</span>
+                                            <h5>Date Posted: </h5>
+                                            <span>{{$job->created_at}}</span>
                                         </li>
                                         <li>
                                             <i class="icon icon-expiry"></i>
                                             <h5>Expiration date:</h5>
-                                            <span>April 06, 2021</span>
+                                            <span>{{$job->date}}</span>
                                         </li>
                                         <li>
                                             <i class="icon icon-location"></i>
                                             <h5>Location:</h5>
-                                            <span>London, UK</span>
+                                            <span>{{$job->address}}</span>
                                         </li>
                                         <li>
                                             <i class="icon icon-user-2"></i>
                                             <h5>Job Title:</h5>
-                                            <span>Designer</span>
+                                            <span>{{$job->job_title}}</span>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <i class="icon icon-clock"></i>
                                             <h5>Hours:</h5>
                                             <span>50h / week</span>
-                                        </li>
-                                        <li>
+                                        </li> --}}
+                                        {{-- <li>
                                             <i class="icon icon-rate"></i>
                                             <h5>Rate:</h5>
                                             <span>$15 - $25 / hour</span>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <i class="icon icon-salary"></i>
                                             <h5>Salary:</h5>
-                                            <span>$35k - $45k</span>
+                                            <span>{{$job->salary}}</span>
                                         </li>
                                     </ul>
                                 </div>
 
                                 <!-- Map Widget -->
-                                <h4 class="widget-title">Job Location</h4>
+                                {{-- <h4 class="widget-title">Job Location</h4>
                                 <div class="widget-content">
                                     <div class="map-outer">
                                         <div class="map-canvas"
@@ -208,10 +191,10 @@
                                             data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Job Skills -->
-                                <h4 class="widget-title">Job Skills</h4>
+                                {{-- <h4 class="widget-title">Job Skills</h4>
                                 <div class="widget-content">
                                     <ul class="job-skills">
                                         <li><a href="#">app</a></li>
@@ -221,10 +204,10 @@
                                         <li><a href="#">design</a></li>
                                         <li><a href="#">react</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
 
-                            <div class="sidebar-widget company-widget">
+                            {{-- <div class="sidebar-widget company-widget">
                                 <div class="widget-content">
                                     <div class="company-title">
                                         <div class="company-logo"><img src="{{asset('frontend/images/resource/company-7.png')}}" alt=""></div>
@@ -233,6 +216,7 @@
                                     </div>
 
                                     <ul class="company-info">
+
                                         <li>Primary industry: <span>Software</span></li>
                                         <li>Company size: <span>501-1,000</span></li>
                                         <li>Founded in: <span>2011</span></li>
@@ -251,7 +235,7 @@
 
                                     <div class="btn-box"><a href="#" class="theme-btn btn-style-three">www.invisionapp.com</a></div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </aside>
                     </div>
                 </div>
