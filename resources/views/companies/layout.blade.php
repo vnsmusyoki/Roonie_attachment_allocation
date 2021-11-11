@@ -49,17 +49,17 @@
                             </ul>
                         </li>
 
-                      
+
 
                         <li class="dropdown">
                             <span>Companies</span>
                             <ul>
-                                 
+
                                         <li><a href="">Add New Company</a></li>
                                         <li><a href="">Unverified Companies</a></li>
-                                        <li><a href="">Manage Verified Companies</a></li> 
-                                 
- 
+                                        <li><a href="">Manage Verified Companies</a></li>
+
+
                                 <li><a href="">Filter Company</a></li>
                             </ul>
                         </li>
@@ -174,10 +174,10 @@
 
             <div class="outer-box">
                 <!-- Add Listing -->
-                 
+
                 <!-- Login/Register -->
                 <div class="btn-box">
-                   
+
                     <a href="" class="theme-btn btn-style-one">Log Out</a>
                 </div>
             </div>
@@ -205,8 +205,8 @@
         <div id="nav-mobile"></div>
     </header>
     <!--End Main Header -->
- 
-    
+
+
         <!-- Banner Section-->
         <section class="banner-section">
             <div class="auto-container">
@@ -217,7 +217,7 @@
                                 <h3>There Are <span class="colored">93,178</span> Postings Here<br> For you!</h3>
                                 <div class="text">Find Jobs, Employment & Career Opportunities</div>
                             </div>
-    
+
                             <!-- Job Search Form -->
                             <div class="job-search-form">
                                 <form method="post" action="https://creativelayers.net/themes/superio/job-list-v10.html">
@@ -239,7 +239,7 @@
                                 </form>
                             </div>
                             <!-- Job Search Form -->
-    
+
                             <!-- Popular Search -->
                             <div class="popular-searches">
                                 <span class="title">Popular Searches : </span>
@@ -258,15 +258,15 @@
             </div>
         </section>
         <!-- End Banner Section-->
-    
-    
+
+
         <!-- Job Section -->
         <section class="job-section">
             <div class="auto-container">
                 <div class="sec-title text-center">
-                    <h2>Featured Attachment Positions</h2> 
+                    <h2>Featured Attachment Positions</h2>
                 </div>
-    
+
                 <div class="row wow fadeInUp">
                     <!-- Job Block -->
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
@@ -289,7 +289,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Job Block -->
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
@@ -311,7 +311,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Job Block -->
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
@@ -333,7 +333,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Job Block -->
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
@@ -355,7 +355,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Job Block -->
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
@@ -377,7 +377,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Job Block -->
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
@@ -400,18 +400,18 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="btn-box">
                     <a href="#" class="theme-btn btn-style-one bg-blue"><span class="btn-title">Load More Listing</span></a>
                 </div>
             </div>
         </section>
         <!-- End Job Section -->
-     
- 
+
+
      <!-- Main Footer -->
      <footer class="main-footer">
-      
+
 
 
         <!--Bottom-->
