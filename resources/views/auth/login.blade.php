@@ -87,25 +87,7 @@
                                             <button type="submit" class="btn btn-login btn-block">Sign in</button>
                                         </div>
                                     </div>
-                                    <hr class="my-4">
-                                    <div class="mt-4 text-center">
-                                        <!--Facebook-->
-                                        <a href="#" class="btn-social btn-social-outline ">
-                                            <i class="bi bi-house"></i>
-                                        </a>
-                                        <!--Twitter-->
-                                        <a href="#" class="btn-social btn-social-outline  ">
-                                            <i class="bi bi-twitter"></i>
-                                        </a>
-                                        <!--LinkedIn-->
-                                        <a href="#" class="btn-social btn-social-outline  ">
-                                            <i class="bi bi-facebook"></i>
-                                        </a>
-                                        <!--GitHub-->
-                                        <a href="#" class="btn-social btn-social-outline  ">
-                                            <i class="bi bi-whatsapp"></i>
-                                        </a>
-                                    </div>
+
                                 </form>
                             </div>
                         </div>

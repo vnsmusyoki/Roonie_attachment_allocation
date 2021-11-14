@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\employer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Application;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
@@ -22,7 +23,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('theme.employer.job_list');
+        $job =Job::all();
+        $total = Application::count('resume');
+        return view('theme.employer.job_list',compact('job','total'));
     }
 
     /**

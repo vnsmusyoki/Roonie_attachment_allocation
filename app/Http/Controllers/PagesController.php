@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Session;
 
 class PagesController extends Controller
 {
@@ -21,7 +24,10 @@ class PagesController extends Controller
     }
     public function jobSinglePage($id)
     {
+
         $job = Job::find($id);
+        // Session::put('job_id', $job);
+        session()->put('job_id', $id);
         return view('theme.job_single_page',compact('job'));
     }
 
@@ -46,6 +52,18 @@ class PagesController extends Controller
     }
     public function candidateDashboard()
     {
+
         return view('theme.candidate.dashboard');
+    }
+    public function JobsApplied(){
+        $applied = Application::with(['jobs'])->get();
+        $s = new Collection();
+        
+        // $applied->each(function($d){
+        //     dump($d->jobs);
+        // });
+        // dd('stop');
+
+        return view('theme.candidate.jobs_applied',compact('applied'));
     }
 }

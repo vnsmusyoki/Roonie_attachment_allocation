@@ -17,16 +17,7 @@
                         <div class="widget-title">
                             <h4>My Job Listings</h4>
 
-                            <div class="chosen-outer">
-                                 <!--Tabs Box-->
-                                 <select class="chosen-select">
-                                    <option>Last 6 Months</option>
-                                    <option>Last 12 Months</option>
-                                    <option>Last 16 Months</option>
-                                    <option>Last 24 Months</option>
-                                    <option>Last 5 year</option>
-                                </select>
-                            </div>
+
                         </div>
 
                         <div class="widget-content">
@@ -43,78 +34,29 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <h6>Senior Full Stack Engineer, Creator Success</h6>
-                                                <span class="info"><i class="icon flaticon-map-locator"></i> London, UK</span>
-                                            </td>
-                                            <td class="applied"><a href="#">3+ Applied</a></td>
-                                            <td>October 27, 2017 <br>April 25, 2011</td>
-                                            <td class="status">Active</td>
-                                            <td>
-                                                <div class="option-box">
-                                                    <ul class="option-list">
-                                                        <li><button data-text="View Aplication"><span class="la la-eye"></span></button></li>
-                                                        <li><button data-text="Reject Aplication"><span class="la la-pencil"></span></button></li>
-                                                        <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h6>Senior Product Designer</h6>
-                                                <span class="info"><i class="icon flaticon-map-locator"></i> London, UK</span>
-                                            </td>
-                                            <td class="applied"><a href="#">3+ Applied</a></td>
-                                            <td>October 27, 2017 <br>April 25, 2011</td>
-                                            <td class="status">Active</td>
-                                            <td>
-                                                <div class="option-box">
-                                                    <ul class="option-list">
-                                                        <li><button data-text="View Aplication"><span class="la la-eye"></span></button></li>
-                                                        <li><button data-text="Reject Aplication"><span class="la la-pencil"></span></button></li>
-                                                        <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h6>Sr. Full Stack Engineer</h6>
-                                                <span class="info"><i class="icon flaticon-map-locator"></i> London, UK</span>
-                                            </td>
-                                            <td class="applied"><a href="#">3+ Applied</a></td>
-                                            <td>October 27, 2017 <br>April 25, 2011</td>
-                                            <td class="status">Active</td>
-                                            <td>
-                                                <div class="option-box">
-                                                    <ul class="option-list">
-                                                        <li><button data-text="View Aplication"><span class="la la-eye"></span></button></li>
-                                                        <li><button data-text="Reject Aplication"><span class="la la-pencil"></span></button></li>
-                                                        <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h6>Product Manager, Studio</h6>
-                                                <span class="info"><i class="icon flaticon-map-locator"></i> London, UK</span>
-                                            </td>
-                                            <td class="applied"><a href="#">3+ Applied</a></td>
-                                            <td>October 27, 2017 <br>April 25, 2011</td>
-                                            <td class="status">Active</td>
-                                            <td>
-                                                <div class="option-box">
-                                                    <ul class="option-list">
-                                                        <li><button data-text="View Aplication"><span class="la la-eye"></span></button></li>
-                                                        <li><button data-text="Reject Aplication"><span class="la la-pencil"></span></button></li>
-                                                        <li><button data-text="Delete Aplication"><span class="la la-trash"></span></button></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($job  as $jobs)
+                                            <tr>
+                                                <td>
+                                                    <h6>{{$jobs->job_title}}</h6>
+                                                    <span class="info"><i class="icon flaticon-map-locator"></i> {{$jobs->address}}</span>
+                                                </td>
+                                                <td class="applied"><a href="{{route('applicants')}}">{{$total}}  Applied</a></td>
+                                                <td>{{$jobs->created_at->format('d/m/y')}} <br>{{$jobs->date}}</td>
+                                                <td class="status">{{$jobs->status}}</td>
+                                                <td>
+                                                    <div class="option-box">
+                                                        <ul class="option-list">
+                                                            <li><a href="{{route('closed',$jobs->id)}}"><span
+                                                                class="btn btn-danger">Closed Job</span></a></li>
+                                                            <li><a href="{{route('activate',$jobs->id)}}"><span
+                                                                class="btn btn-success" style="margin-left: 40px;">Activate Job</span></a></li>
+                                                        </ul>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>

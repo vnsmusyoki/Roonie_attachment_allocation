@@ -27,6 +27,11 @@
         toastr.success("{!! Session::get('job_created') !!}");
     </script>
 @endif
+@if(Session::has('shortlisted'))
+    <script>
+        toastr.success("{!! Session::get('shortlisted') !!}");
+    </script>
+@endif
 @if(Session::has('company_created'))
     <script>
         toastr.success("{!! Session::get('company_created') !!}");

@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\admin\ContentCOntroller;
 use App\Http\Controllers\admin\StudentsController;
+use App\Http\Controllers\Candidate\CandidateController;
 use App\Http\Controllers\clerk\FinanceController;
 use App\Http\Controllers\CreateAccountsController;
 use App\Http\Controllers\employer\EmployerAccountController;
@@ -22,11 +23,29 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/job-list', [PagesController::class, 'jobList'])->name('job-list');
 Route::get('/job-single-page/{id}', [PagesController::class, 'jobSinglePage'])->name('job-single-page');
 Route::get('/employer-list', [PagesController::class, 'employers'])->name('employer-list');
+Route::get('/jobs-applied', [PagesController::class, 'JobsApplied'])->name('jobs-applied');
 Route::get('/employer-single-pange', [PagesController::class, 'employerSinglepage'])->name('employer-single-pange');
+Route::middleware('auth')->group(function () {
+    Route::get('application-form',[CandidateController::class, 'apply'] )->name('application-form');
+    Route::get('short-listed',[CandidateController::class, 'shortList'] )->name('short-listed');
+    Route::post('application',[CandidateController::class, 'storeApplication'])->name('store-application');
+    Route::get('/pdf/{id}', [EmployerAccountController::class, 'createPDF'])->name('application_pdf');
+    //Download school letter
+    Route::get('/school-pdf/{id}', [EmployerAccountController::class, 'viewSchoolLetter'])->name('view_school_letter');
+    Route::get('/view-pdf/{id}', [EmployerAccountController::class, 'viewPdf'])->name('view_pdf');
+});
+
 
 
 Route::prefix('employer')->group(function(){
     Route::get('dashboard', [EmployerAccountController::class, 'employerDashboard'])->name('employer');
+    Route::get('applicants', [EmployerAccountController::class, 'applicants'])->name('applicants');
+    Route::get('shortlist/{id}', [EmployerAccountController::class, 'shortlist'])->name('shortlist');
+    Route::get('reject/{id}', [EmployerAccountController::class, 'reject'])->name('reject');
+    Route::get('closed/{id}', [EmployerAccountController::class, 'closed'])->name('closed');
+    Route::get('activate/{id}', [EmployerAccountController::class, 'activate'])->name('activate');
+    // Route::get('view-resume/{id}', [EmployerAccountController::class, 'viewApplications']);
+    Route::get('view-campany-profile', [EmployerAccountController::class, 'viewCompanyProfile'])->name('view_company_profile');
     Route::get('campany-profile', [EmployerAccountController::class, 'companyProfile'])->name('company-profile');
     Route::get('post-job', [EmployerAccountController::class, 'postJob'])->name('post-job');
     Route::post('campany-profile', [EmployerAccountController::class, 'storeCompanyProfile'])->name('store-company-profile');
@@ -37,7 +56,7 @@ Route::prefix('employer')->group(function(){
 //candidates
 Route::get('/candidate-list', [PagesController::class, 'candidates'])->name('candidate-list');
 Route::get('/candidate-single-pange', [PagesController::class, 'candidateSinglepage'])->name('candidate-single-pange');
-Route::get('/candidate-dashboard', [PagesController::class, 'candidateDashboard'])->name('candidate-dashboard');
+Route::get('/candidate-dashboard', [PagesController::class, 'candidateDashboard'])->name('candidate-dashboard')->middleware('auth');
 
 
 Route::get('register/employer', [CreateAccountsController::class, 'employer'])->name('register.employer');

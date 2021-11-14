@@ -21,6 +21,10 @@
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 
 <link rel="stylesheet" href="{{  asset('css/toastr.min.css') }}">
+
+{{-- message toaster --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body data-anm=".anm">
@@ -111,7 +115,7 @@
                                         {{-- <li><a href="candidates-single-v2.html">Candidates Single v2</a></li>
                                         <li><a href="candidates-single-v3.html">Candidates Single v3</a></li> --}}
                                     </ul>
-                                </li>
+                                </li>candidate-dashboard
                                 <li><a href="{{route('candidate-dashboard')}}">Candidates Dashboard</a></li>
                             </ul>
                         </li>

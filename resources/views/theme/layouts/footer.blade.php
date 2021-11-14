@@ -121,6 +121,25 @@
 
 </body>
 
+{{-- message toaster --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+@if(Session::has('job_created'))
+    <script>
+        toastr.success("{!! Session::get('job_created') !!}");
+    </script>
+@endif
+@if(Session::has('company_created'))
+    <script>
+        toastr.success("{!! Session::get('company_created') !!}");
+    </script>
+@endif
+@if(Session::has('error'))
+    <script>
+        toastr.error("{!! Session::get('error') !!}");
+    </script>
+@endif
+
 <!-- Mirrored from creativelayers.net/themes/superio/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Oct 2021 06:33:13 GMT -->
 </html>
 

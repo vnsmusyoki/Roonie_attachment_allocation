@@ -165,6 +165,8 @@ return [
         Brian2694\Toastr\ToastrServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -234,6 +236,8 @@ return [
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Image' => Intervention\Image\Facades\Image::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

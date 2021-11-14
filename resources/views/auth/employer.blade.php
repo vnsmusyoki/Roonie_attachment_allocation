@@ -26,8 +26,8 @@
 
     <div class="page-wrapper">
 
-        <!-- Preloader -->
-        <div class="preloader"></div>
+        {{-- <!-- Preloader -->
+        <div class="preloader"></div> --}}
 
         <!-- Main Header-->
         <header class="main-header">
@@ -37,7 +37,7 @@
                     <!--Nav Outer -->
                     <div class="nav-outer">
                         <div class="logo-box">
-                            <div class="logo"><a href="index.html"><img
+                            <div class="logo"><a href="/"><img
                                         src="{{asset('frontend/images/attach_logo.png')}}" alt="" title=""></a></div>
                         </div>
                     </div>
@@ -73,8 +73,7 @@
                                 </div>
                             </li>
                             @endguest
-                            <a href="dashboard-post-job.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Job Post</span></a>
+
                         </div>
                     </div>
                 </div>
@@ -82,7 +81,7 @@
 
             <!-- Mobile Header -->
             <div class="mobile-header">
-                <div class="logo"><a href="index.html"><img src="{{asset('frontend/images/attach_logo.png')}}" alt=""
+                <div class="logo"><a href="/"><img src="{{asset('frontend/images/attach_logo.png')}}" alt=""
                             title=""></a></div>
 
                 <!--Nav Box-->
@@ -177,19 +176,7 @@
                             </div>
                         </form>
 
-                        <div class="bottom-box">
-                            <div class="divider"><span>or</span></div>
-                            <div class="btn-box row">
-                                <div class="col-lg-6 col-md-12">
-                                    <a href="#" class="theme-btn social-btn-two facebook-btn"><i
-                                            class="fab fa-facebook-f"></i> Log In via Facebook</a>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <a href="#" class="theme-btn social-btn-two google-btn"><i
-                                            class="fab fa-google"></i> Log In via Gmail</a>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <!--End Login Form -->

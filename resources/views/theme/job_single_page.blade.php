@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="btn-box">
-                            <a href="#" class="theme-btn btn-style-one">Apply For Job</a>
+                            <a href="{{route('application-form')}}" class="theme-btn btn-style-one">Apply For Job</a>
                             <button class="bookmark-btn"><i class="flaticon-bookmark"></i></button>
                         </div>
                     </div>

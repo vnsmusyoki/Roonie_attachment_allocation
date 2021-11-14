@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration
             $table->integer('salary')->nullable();
             $table->string('gender')->nullable();
             $table->string('industry')->nullable();
+            $table->string('image')->nullable();
             $table->string('qualification')->nullable();
             $table->date('date')->nullable();
             $table->string('city')->nullable();
