@@ -6,7 +6,7 @@
     <section class="user-dashboard">
         <div class="dashboard-outer">
             <div class="upper-title-box">
-                <h3>Howdy, Invision!</h3>
+                <h3>Howdy, {{ Auth::user()->name }}!</h3>
                 <div class="text">Ready to jump back in?</div>
             </div>
             <div class="row">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="right">
                             <h4>22</h4>
-                            <p>Posted Jobs</p>
+                            <p>Posted Opportunities</p>
                         </div>
                     </div>
                 </div>
@@ -59,32 +59,8 @@
             <div class="row">
 
 
-                <div class="col-xl-7 col-lg-12">
-                    <!-- Graph widget -->
-                    <div class="graph-widget ls-widget">
-                        <div class="tabs-box">
-                            <div class="widget-title">
-                                <h4>Your Profile Views</h4>
-                                <div class="chosen-outer">
-                                     <!--Tabs Box-->
-                                     <select class="chosen-select">
-                                        <option>Last 6 Months</option>
-                                        <option>Last 12 Months</option>
-                                        <option>Last 16 Months</option>
-                                        <option>Last 24 Months</option>
-                                        <option>Last 5 year</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="widget-content">
-                                <canvas id="chart" width="100" height="45"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-5 col-lg-12">
+            
+                <div class="col-xl-12 col-lg-12">
                     <!-- Notification Widget -->
                     <div class="notification-widget ls-widget">
                         <div class="widget-title"><h4>Notifications</h4></div>
@@ -105,7 +81,7 @@
                 <div class="col-lg-12">
                     <!-- applicants Widget -->
                     <div class="applicants-widget ls-widget">
-                        <div class="widget-title"><h4>Recent Applicants</h4></div>
+                        <div class="widget-title"><h4>Recent Student Applications</h4></div>
                         <div class="widget-content">
                             <div class="row">
                                 <!-- Candidate block three -->

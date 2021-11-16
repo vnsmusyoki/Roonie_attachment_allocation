@@ -93,6 +93,4 @@ Route::prefix('student')->group(function () {
     Route::get('account-password', [StudentAccountController::class, 'accountpassword']);
 });
 
-
-// CLERK LINKS
-Route::get('finance/dashboard', [FinanceController::class, 'index'])->name('clerk');
+ 
