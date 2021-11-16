@@ -19,13 +19,11 @@
         </div>
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="treeview">
+             
+            <li>
                 <a href="{{ url('admin/dashboard') }}">
                     <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
                     <span>Dashboard</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
                 </a>
             </li>
             <li>

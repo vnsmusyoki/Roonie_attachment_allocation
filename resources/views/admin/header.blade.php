@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="https://joblly-admin-template-dashboard.multipurposethemes.com/bs4/images/favicon.ico">
-
     <title>Admin Dashboard</title>
 
     <!-- Vendors Style-->
@@ -18,12 +16,9 @@
     <link rel="stylesheet" href="{{ asset('main/main/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('main/main/css/skin_color.css')}}">
 
-    {{-- message toaster --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{{ asset('main/main/js/jquery-3.6.0.min.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('main/main/css/toastr.min.css') }}">
 
 </head>
 
@@ -99,14 +94,14 @@
                                 <li class="user-body">
                                     <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
                                         Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> 
+                                    <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i>
                                         Posted Opportunities</a>
                                     <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i>
                                         Shortlisted</a>
-                                    <div class="dropdown-divider"></div> 
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                       <i class="ti-lock text-muted mr-2"></i> {{ __('Logout') }}
+                                        <i class="ti-lock text-muted mr-2"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
