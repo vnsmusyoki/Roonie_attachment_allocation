@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from joblly-admin-template-dashboard.multipurposethemes.com/bs4/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:25:17 GMT -->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,8 +19,11 @@
     <link rel="stylesheet" href="{{ asset('main/main/css/skin_color.css')}}">
 
     {{-- message toaster --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -39,7 +40,7 @@
                     <i data-feather="menu"></i>
                 </a>
                 <!-- Logo -->
-                <a href="index.html" class="logo">
+                <a href="{{ route('admin') }}" class="logo">
                     <!-- logo-->
                     <div class="logo-lg">
                         <span class="light-logo"><img src="{{ asset('main/images/logo-dark-text.png') }}"
@@ -66,7 +67,8 @@
                 <div class="navbar-custom-menu r-side">
                     <ul class="nav navbar-nav">
                         <li class="btn-group nav-item d-lg-flex d-none align-items-center">
-                            <p class="mb-0 text-fade pr-10 pt-5">Friday, 4th December 2020</p>
+                            <p class="mb-0 text-fade pr-10 pt-5">{{ Carbon\Carbon::now()->addHours(3)->format('l, d-m-y
+                                h:i:s a') }}</p>
                         </li>
                         <li class="btn-group nav-item d-lg-inline-flex d-none">
                             <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen"
@@ -76,82 +78,16 @@
                         </li>
                         <!-- Control Sidebar Toggle Button -->
                         <li class="btn-group nav-item d-inline-flex">
-                            <a href="#" data-toggle="control-sidebar"
-                                class="waves-effect waves-light nav-link full-screen" title="Setting">
+                            <a href="#" class="waves-effect waves-light nav-link full-screen" title="Setting">
                                 <i data-feather="settings"></i>
                             </a>
                         </li>
                         <!-- Notifications -->
                         <li class="dropdown notifications-menu">
-                            <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown"
-                                title="Notifications">
+                            <a href="#" class="waves-effect waves-light dropdown-toggle" title="Notifications">
                                 <i data-feather="bell"></i>
                             </a>
-                            <ul class="dropdown-menu animated bounceIn">
 
-                                <li class="header">
-                                    <div class="p-20">
-                                        <div class="flexbox">
-                                            <div>
-                                                <h4 class="mb-0 mt-0">Notifications</h4>
-                                            </div>
-                                            <div>
-                                                <a href="#" class="text-danger">Clear All</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu sm-scrol">
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc
-                                                suscipit blandit.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu
-                                                sapien elementum, in semper diam posuere.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor
-                                                commodo porttitor pretium a erat.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et
-                                                nisi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero
-                                                dictum fermentum.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user text-primary"></i> Nunc fringilla lorem
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam
-                                                interdum, at scelerisque ipsum imperdiet.
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <a href="#">View all</a>
-                                </li>
-                            </ul>
                         </li>
                         <!-- User Account-->
                         <li class="dropdown user user-menu">
@@ -163,12 +99,19 @@
                                 <li class="user-body">
                                     <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
                                         Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My
-                                        Wallet</a>
+                                    <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> 
+                                        Posted Opportunities</a>
                                     <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i>
-                                        Settings</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                                        Shortlisted</a>
+                                    <div class="dropdown-divider"></div> 
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                       <i class="ti-lock text-muted mr-2"></i> {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </li>
                             </ul>
                         </li>
