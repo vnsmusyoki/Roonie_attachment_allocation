@@ -161,8 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Brian2694\Toastr\ToastrServiceProvider::class,
-        Brian2694\Toastr\ToastrServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class, 
         Intervention\Image\ImageServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,

@@ -14,7 +14,7 @@
                                         <div class="box-body py-0">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <h5 class="text-fade">Applications</h5>
+                                                    <h5 class="text-fade">Opportunities</h5>
                                                     <h2 class="font-weight-500 mb-0">132.0K</h2>
                                                 </div>
                                                 <div>

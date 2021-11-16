@@ -1,7 +1,3 @@
-//[Dashboard Javascript]
-
-//Project:	Joblly - Responsive Admin Template
-//Primary use:   Used only for the main dashboard (index.html)
 
 
 $(function () {

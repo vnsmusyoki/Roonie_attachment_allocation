@@ -1,81 +1,82 @@
-
-
-
 @extends('admin.main')
 
 @section('main')
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">Categories List</h3>
-					{{-- <div class="d-inline-block align-items-center">
-						<nav>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Tables</li>
-								<li class="breadcrumb-item active" aria-current="page">Editable Tables</li>
-							</ol>
-						</nav>
-					</div> --}}
-				</div>
-				
-			</div>
-		</div>
+<div class="content-wrapper">
+	<div class="container-full">
+	 
 
 		<!-- Main content -->
 		<section class="content">
 
-		  <div class="row">
-
-			  <div class="col-12">
-				<div class="box">
-					{{-- <div class="box-header">
-						<h4 class="box-title">Editable with <strong>Datatable</strong></h4>	
-						<h6 class="subtitle">Just click on word which you want to change and enter</h6>
-					</div> --}}
-
-			  <div class="box-body">
-				  <div class="table-responsive">
-					<table id="example1" class="table table-bordered table-separated">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-                            @foreach ($categories as $category)
-                                <tr>
-                                    <td>{{$category->name}}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                    
-                                </tr>
-                            @endforeach
-							
-						 
-						</tfoot>
-					  </table>
-				  </div>
-			  </div>
+			<div class="row">
+ 
+				<div class="col-12">
+  
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">All Categories Uploaded</h3> 
+						</div>
+						<!-- /.box-header -->
+						<div class="box-body">
+							<div class="table-responsive">
+								<table id="example" class="table table-sm table-bordered table-hover display nowrap margin-top-10 w-p100">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Name</th>
+											<th>Date Created</th>
+											<th>last Update</th>
+											<th>Edit</th> 
+											<th>Delete</th>
+										</tr>
+									</thead>
+									<tbody>
+									 @if ($categories->count() >=1)
+										 @foreach ($categories as $category)
+											 <tr>
+												 <td>{{ $category->id }}</td>
+												 <td>{{ $category->name }}</td>
+												 <td>{{ $category->created_at->addHours(3)->format('d-m-y h:i:s a') }}</td>
+												 <td>{{ $category->updated_at->addHours(3)->format('d-m-y h:i:s a') }}</td>
+											 
+												 <td>
+													<a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
+												 </td>
+												 <td>
+													
+													<form action="{{ route('category.destroy', $category->id)}}" method="post">
+														@csrf
+														@method('DELETE')
+														<button class="btn btn-danger" type="submit">Delete</button>
+													  </form>
+												 </td>
+											 </tr>
+										 @endforeach
+									 @endif
+									</tbody>
+									<tfoot>
+										<tr>
+											<th>#</th>
+											<th>Name</th>
+											<th>Date Created</th>
+											<th>last Update</th>
+											<th>Edit</th> 
+											<th>Delete</th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
 			</div>
-			
-
-		  </div>
-
-		  <div class="row">
-
-		  </div>
 
 		</section>
 		<!-- /.content -->
-	  </div>
-  </div>
-  <!-- /.content-wrapper -->
+	</div>
+</div>
+<!-- /.content-wrapper -->
 @endsection

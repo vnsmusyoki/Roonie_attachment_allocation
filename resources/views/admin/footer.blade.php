@@ -40,6 +40,9 @@
 <script src="{{ asset('main/main/js/pages/dashboard.js')}}"></script>
 <script src="{{ asset('main/main/js/pages/calendar-dash.js')}}"></script>
 <script src="{{ asset('main/main/js/toastr.min.js') }}"></script> 
+<script src="{{ asset('main/main/datatable/datatables.min.js')}}"></script> 
+<script src="{{ asset('main/main/pages/data-table.js') }}"></script>
+{!! Toastr::message() !!}
 @if(Session::has('category_created'))
     <script>
         toastr.success("{!! Session::get('category_created') !!}");
