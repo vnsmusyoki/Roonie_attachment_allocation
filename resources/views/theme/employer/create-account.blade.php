@@ -40,7 +40,7 @@
                     <!--Nav Outer -->
                     <div class="nav-outer">
                         <div class="logo-box">
-                            <div class="logo"><a href="index.html"><img
+                            <div class="logo"><a href="{{ url('/') }}"><img
                                         src="{{ asset('frontend/images/attach_logo.png') }}" alt="" title=""></a></div>
                         </div>
                     </div>
@@ -49,37 +49,34 @@
                         <!-- Login/Register -->
                         <div class="btn-box">
                             @guest
-                                @if (Route::has('login'))
+                            @if (Route::has('login'))
 
-                                    <a class="theme-btn btn-style-three"
-                                        href="{{ route('login') }}">{{ __('My Account') }}</a>
+                            <a class="theme-btn btn-style-three" href="{{ route('login') }}">{{ __('My Account') }}</a>
 
-                                @endif
+                            @endif
 
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="theme-btn btn-style-three dropdown-toggle" href="#"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                        v-pre>
-                                        {{ Auth::user()->name }}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="theme-btn btn-style-three dropdown-toggle" href="#"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="theme-btn btn-style-three dropdown-menu dropdown-menu-right"
+                                    aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
                                     </a>
 
-                                    <div class="theme-btn btn-style-three dropdown-menu dropdown-menu-right"
-                                        aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                             @endguest
-                            <a href="dashboard-post-job.html" class="theme-btn btn-style-one"><span
-                                    class="btn-title">Job Post</span></a>
+
                         </div>
                     </div>
                 </div>
@@ -87,8 +84,8 @@
 
             <!-- Mobile Header -->
             <div class="mobile-header">
-                <div class="logo"><a href="index.html"><img
-                            src="{{ asset('frontend/images/attach_logo.png') }}" alt="" title=""></a></div>
+                <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('frontend/images/attach_logo.png') }}"
+                            alt="" title=""></a></div>
 
                 <!--Nav Box-->
                 <div class="nav-outer clearfix">
@@ -96,7 +93,7 @@
                     <div class="outer-box">
                         <!-- Login/Register -->
                         <div class="login-box">
-                            <a href="login-popup.html" class="call-modal"><span class="icon-user"></span></a>
+                            <a href="" class="call-modal"><span class="icon-user"></span></a>
                         </div>
 
                         <a href="#nav-mobile" class="mobile-nav-toggler navbar-trigger"><span
@@ -112,19 +109,19 @@
 
         <!-- Info Section -->
         <div class="login-section">
-            <div class="image-layer"
-                style="background-image: url({{ asset('frontend/images/background/12.jpg') }});">
+            <div class="image-layer" style="background-image: url({{ asset('frontend/images/background/12.jpg') }});">
             </div>
             <div class="outer-box">
                 <!-- Login Form -->
                 <div class="login-form default-form">
                     <div class="form-inner">
-                        <h3>Create Account</h3>
+
                         <div class="form-group">
                             <div class="btn-box row">
-                                <div class="col-lg-6 col-md-12">
-                                    <a href="#" class="theme-btn btn-style-four"><i class="la la-briefcase"></i>
-                                        Employer </a>
+                                <div class="col-lg-12 col-md-12 ">
+                                    <a href="#" class="theme-btn btn-style-four btn-block"><i
+                                            class="la la-briefcase"></i>
+                                        Create Account Employer </a>
                                 </div>
                             </div>
                         </div>
@@ -138,9 +135,9 @@
                                     name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert" style="color: red;">
-                                        <strong style="color: red">{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert" style="color: red;">
+                                    <strong style="color: red">{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -149,9 +146,9 @@
                                     name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert" style="color: red;">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert" style="color: red;">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
@@ -163,14 +160,14 @@
                                     required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert" style="color: red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert" style="color: red">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                <label for="password-confirm" >{{
+                                    __('Confirm Password') }}</label>
 
                                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -179,31 +176,15 @@
                             </div>
 
                             <div class="form-group">
-                                <button class="theme-btn btn-style-one " type="submit" name="Register">Register</button>
+                                <button class="theme-btn btn-style-one " type="submit" name="Register">Register Company/Firm/Association</button>
                             </div>
                         </form>
-
-                        <div class="bottom-box">
-                            <div class="divider"><span>or</span></div>
-                            <div class="btn-box row">
-                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                                    <a href="#" class="theme-btn social-btn-two facebook-btn"><i
-                                            class="fab fa-facebook-f"></i> Log In via Facebook</a>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <a href="#" class="theme-btn social-btn-two google-btn"><i
-                                            class="fab fa-google"></i> Log In via Gmail</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!--End Login Form -->
             </div>
         </div>
         <!-- End Info Section -->
-
-
     </div><!-- End Page Wrapper -->
 
 
