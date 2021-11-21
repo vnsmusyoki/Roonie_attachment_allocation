@@ -60,9 +60,9 @@ Route::get('/candidate-dashboard', [PagesController::class, 'candidateDashboard'
 
 
 Route::get('register/employer', [CreateAccountsController::class, 'employer'])->name('register.employer');
-Route::get('register/candidate', [RegisterController::class, 'candidate'])->name('register.candidate');
+Route::get('register/candidate', [CreateAccountsController::class, 'student'])->name('register.candidate');
 Route::post('register/employer', [CreateAccountsController::class, 'registerEmployer'])->name('register.save-employer');
-Route::post('register/candidate', [RegisterController::class, 'registerCandidate'])->name('register.save-candidate');
+Route::post('register/student', [CreateAccountsController::class, 'registerCandidate'])->name('register.save-candidate');
 
 
 Route::get('/logoutchecked', function (Request $request) {
@@ -91,6 +91,7 @@ Route::get('student/dashboard', [StudentAccountController::class, 'index'])->nam
 Route::prefix('student')->group(function () {
     Route::get('feestatement', [StudentAccountController::class, 'feestatement']);
     Route::get('account-password', [StudentAccountController::class, 'accountpassword']);
+    Route::get('edit-profile', [StudentAccountController::class, 'editprofile']);
 });
 
- 
+

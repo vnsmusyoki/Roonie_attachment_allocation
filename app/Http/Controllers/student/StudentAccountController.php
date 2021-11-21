@@ -9,7 +9,7 @@ class StudentAccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'role:students', 'verified']);
+        $this->middleware(['auth', 'role:student', 'verified']);
     }
 
     public function index(){
@@ -20,5 +20,8 @@ class StudentAccountController extends Controller
     }
     public function accountpassword(){
         return view('students.account-password');
+    }
+    public function editprofile(){
+        return view('students.edit-profile');
     }
 }

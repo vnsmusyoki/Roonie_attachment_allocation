@@ -76,7 +76,5 @@ class RegisterController extends Controller
     public function candidate(){
         return view('auth.candidate');
     }
-    public function registerCandidate(Request $request){
-
-    }
+   
 }
