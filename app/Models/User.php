@@ -23,6 +23,9 @@ class User extends Authenticatable implements MustVerifyEmail
      public function userstudentprofile(){
          return $this->belongsTo(StudentProfile::class, 'student_id','id');
      }
+     public function userscompanyprofile(){
+         return $this->belongsTo(Company::class);
+     }
 
     protected $fillable = [
         'name',

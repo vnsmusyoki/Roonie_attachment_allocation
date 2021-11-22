@@ -27,7 +27,7 @@
                                     <h5>Company Logo</h5>
                                     <div class="controls">
                                         <input class="form-control @error('logo') is-invalid @enderror" type="file"
-                                            name="logo" />
+                                            name="logo" value="{{ old('logo') }}" />
                                         @error('logo')
                                             <div class="alert alert-danger">{{ $message }}
                                             </div>
@@ -40,7 +40,8 @@
                                         <h5>Company name </h5>
                                         <div class="controls">
                                             <input type="text" name="company_name" placeholder="Invisionn"
-                                                class="form-control @error('company_name') is-invalid @enderror">
+                                                class="form-control @error('company_name') is-invalid @enderror"
+                                                value="{{ old('company_name') }}">
                                             @error('company_name')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -53,6 +54,7 @@
                                         <h5>Email address</h5>
                                         <div class="controls">
                                             <input type="text" name="company_email" placeholder="creativelayers"
+                                                value="{{ old('company_email') }}"
                                                 class="form-control @error('company_email') is-invalid @enderror">
                                             @error('company_email')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -66,6 +68,7 @@
                                         <h5>Phone Number</h5>
                                         <div class="controls">
                                             <input type="text" name="phone" placeholder="+254 723 456 789"
+                                                value="{{ old('phone') }}"
                                                 class="form-control @error('phone') is-invalid @enderror">
                                             @error('phone')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -73,22 +76,18 @@
                                         </div>
 
                                     </div>
-
                                     <!-- Input -->
                                     <div class="form-group col-lg-6 col-md-12">
                                         <h5>Website</h5>
                                         <div class="controls">
                                             <input type="text" name="website_name" placeholder="www.invision.com"
+                                                value="{{ old('website_name') }} "
                                                 class="form-control @error('website_name') is-invalid @enderror">
                                             @error('website_name')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-
                                     </div>
-
-
                                     <!-- Search Select -->
                                     <div class="form-group col-lg-6 col-md-12">
                                         <h5>Multiple Select boxes </h5>
@@ -106,10 +105,7 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-
                                     </div>
-
                                     <!-- Input -->
                                     <div class="form-group col-lg-6 col-md-12">
                                         <h5>Team Size</h5>
@@ -129,15 +125,12 @@
                                         </div>
 
                                     </div>
-
-
-
                                     <!-- About Company -->
                                     <div class="form-group col-lg-12 col-md-12">
                                         <h5>About Company</h5>
                                         <div class="controls">
-                                            <textarea type="text" name="about_company" class="form-control"
-                                                placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugo's on Wall Street. Managed a small team buying and selling Pogo sticks for farmers. Spent several years licensing licorice in West Palm Beach, FL. Developed several new methods for working it banjos in the aftermarket. Spent a weekend importing banjos in West Palm Beach, FL.In this position, the Software Engineer collaborates with Evention's Development team to continuously enhance our current software solutions as well as create new solutions to eliminate the back-office operations and management challenges present"></textarea>
+                                            <textarea type="text" name="about_company" rows="5" class="form-control"
+                                                placeholder="describe about the company here">{{ old('about_company') }}</textarea>
                                             @error('about_company')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -159,6 +152,7 @@
                                                                 <h5>Facebook</h5>
                                                                 <div class="controls">
                                                                     <input type="text" name="facebook_link"
+                                                                        value="{{ old('facebook_link') }}"
                                                                         class="form-control"
                                                                         placeholder="www.facebook.com/Invision">
                                                                     @error('facebook_link')
@@ -174,6 +168,7 @@
                                                                 <h5>Twitter</h5>
                                                                 <div class="controls">
                                                                     <input type="text" class="form-control"
+                                                                        value="{{ old('twitter_link') }}"
                                                                         name="twitter_link" placeholder="">
                                                                     @error('twitter_link')
                                                                         <div class="alert alert-danger">{{ $message }}
@@ -245,8 +240,9 @@
                                                                 <h5>Complete Address</h5>
                                                                 <div class="controls">
                                                                     <input type="text" name="address" class="form-control"
+                                                                        value="{{ old('address') }}"
                                                                         placeholder="329 Nairobi Street, Luthuli Avenue.">
-                                                                        @error('address')
+                                                                    @error('address')
                                                                         <div class="alert alert-danger">{{ $message }}
                                                                         </div>
                                                                     @enderror

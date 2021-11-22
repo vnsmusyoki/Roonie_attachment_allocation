@@ -15,9 +15,8 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('cover')->nullable();
+            $table->bigInteger('manager_id')->nullable()->unsigned();
+            $table->string('logo')->nullable(); 
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();
             $table->integer('phone')->nullable();
@@ -26,12 +25,11 @@ class CreateCompaniesTable extends Migration
             $table->string('category')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
-            $table->string('logitude')->nullable();
-            $table->string('latitude')->nullable();
             $table->text('about_company')->nullable();
             $table->string('facebook_link')->nullable();
             $table->string('twitter_link')->nullable();
             $table->string('address')->nullable();
+            $table->foreign('manager_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

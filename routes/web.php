@@ -43,7 +43,16 @@ Route::prefix('employer')->group(function(){
     Route::get('edit-profile', [EmployerAccountController::class, 'editprofile']);
     Route::post('upload_company_profile', [EmployerAccountController::class, 'storeCompanyProfile']);
     Route::get('shortlist/{id}', [EmployerAccountController::class, 'shortlist'])->name('shortlist');
+
+
+
+
     Route::get('upload-attachment-details', [EmployerAccountController::class, 'uploadopportunity']);
+    Route::post('upload_attachment_slots', [EmployerAccountController::class, 'uploadattachmentslots']);
+    Route::get('manage-attachment-slots', [EmployerAccountController::class, 'allattachmentslots']);
+
+
+
     Route::get('reject/{id}', [EmployerAccountController::class, 'reject'])->name('reject');
     Route::get('closed/{id}', [EmployerAccountController::class, 'closed'])->name('closed');
     Route::get('activate/{id}', [EmployerAccountController::class, 'activate'])->name('activate');
@@ -81,10 +90,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('admin/dashboard', [ContentCOntroller::class, 'index'])->name('admin');
 Route::resource('category', CategoryController::class);
-// Route::prefix('admin')->group(function () {
-
-// });
-
 
 
 

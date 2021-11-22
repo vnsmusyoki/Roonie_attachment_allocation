@@ -61,7 +61,7 @@ class JobController extends Controller
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
         $this->validate($request, $rule);
-        // dd($request);
+     
         $user = Auth::user()->id;
         // $company = Company::get('id')->pluck('id');
         $job = new Job;

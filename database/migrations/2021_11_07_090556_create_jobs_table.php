@@ -16,18 +16,17 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('job_title')->nullable();
-            $table->text('job_description')->nullable();
+            $table->longText('job_description')->nullable();
+            $table->longText('slots_needed')->nullable();
             $table->string('job_category')->nullable();
-            $table->integer('salary')->nullable();
+            $table->integer('course')->nullable();
+            $table->string('appreciation_token')->nullable();
             $table->string('gender')->nullable();
-            $table->string('industry')->nullable();
-            $table->string('image')->nullable();
-            $table->string('qualification')->nullable();
-            $table->date('date')->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
-            $table->enum('status',['active','deactive'])->default('active');
-            $table->integer('company_id');
+            $table->longText('qualification')->nullable();
+            $table->longText('additional_information')->nullable();
+            $table->string('attachment_status')->default('active');
+            $table->bigInteger('company_id')->nullable()->unsigned();
+            $table->foreign('company_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
