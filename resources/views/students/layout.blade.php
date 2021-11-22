@@ -137,17 +137,17 @@
                 <ul class="sidebar-menu" data-widget="tree">
 
                     <li>
-                        <a href="{{ url('admin/dashboard') }}">
+                        <a href="{{ route('student') }}">
                             <i class="icon-Layout-4-blocks"><span class="path1"></span><span
                                     class="path2"></span></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('category.index') }}">
+                        <a href="{{ url('student/all-attachments') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>
-                            <span>Jobs Categories</span>
+                            <span>Attachment Categories</span>
                         </a>
                     </li>
                     <li>

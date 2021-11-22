@@ -26,7 +26,7 @@ class EmployerAccountController extends Controller
 
     public function employerDashboard()
     {
-        return view('companies.dashboard');
+        return view('theme.employer.dashboard');
     }
 
     public function viewCompanyProfile(){
