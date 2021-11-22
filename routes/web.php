@@ -50,6 +50,11 @@ Route::prefix('employer')->group(function(){
     Route::get('upload-attachment-details', [EmployerAccountController::class, 'uploadopportunity']);
     Route::post('upload_attachment_slots', [EmployerAccountController::class, 'uploadattachmentslots']);
     Route::get('manage-attachment-slots', [EmployerAccountController::class, 'allattachmentslots']);
+    Route::get('edit-attachment-slot/{id}', [EmployerAccountController::class, 'editattachmentslot']);
+    Route::patch('update_attachment_slots/{id}', [EmployerAccountController::class, 'updateattachmentslots']);
+    Route::get('close-attachment-applications/{id}', [EmployerAccountController::class, 'updateopportunityslotstatus']);
+    Route::get('manage-closed-attachment-slots', [EmployerAccountController::class, 'closedattachmentslots']);
+    Route::get('delete-attachment-applications/{id}', [EmployerAccountController::class, 'deleteattachmentslots']);
 
 
 

@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
@@ -30,8 +31,11 @@ class EmployerAccountController extends Controller
     {
         $checkcompany = Company::where('manager_id', auth()->user()->id)->count();
         if ($checkcompany  == 0) {
-            return redirect('employer/edit-profile');
+            $categories = Category::all();
+            $courses = Course::all();
+            return redirect('employer/edit-profile', compact(['categories', 'courses']));
         } else {
+
             return view('companies.dashboard');
         }
     }
@@ -183,6 +187,7 @@ class EmployerAccountController extends Controller
     }
     public function uploadattachmentslots(Request $request)
     {
+
         $this->validate($request, [
             'attachment_title' => 'required|string|max:50',
             'attachment_slots' => 'required|numeric|min:1',
@@ -190,6 +195,8 @@ class EmployerAccountController extends Controller
             'gender' => 'required',
             'course' => 'required',
             'category' => 'required',
+            'attachment_start' => 'required|date_format:Y-m|after_or_equal:' . Carbon::now()->format('Y-m'),
+            'attachment_end' => 'required|date_format:Y-m|after_or_equal:attachment_start',
             'task_description' => 'required',
             'requirements_needed' => 'required|string',
             'additional_information' => 'nullable|string'
@@ -199,22 +206,91 @@ class EmployerAccountController extends Controller
         $attachment->job_title = $request->input('attachment_title');
         $attachment->job_description = $request->input('task_description');
         $attachment->slots_needed = $request->input('attachment_slots');
-        $attachment->job_category = $request->input('category');
-        $attachment->course = $request->input('course');
+        $attachment->job_category =  implode(',', (array) $request->get('category'));
+        $attachment->course =  implode(',', (array) $request->get('course'));
         $attachment->appreciation_token = $request->input('appreciation_token');
+        $attachment->attachment_start = $request->input('attachment_start');
+        $attachment->attachment_end = $request->input('attachment_end');
         $attachment->gender = $request->input('gender');
         $attachment->qualification = $request->input('requirements_needed');
         $attachment->additional_information = $request->input('additional_information');
         $attachment->attachment_status = "Active";
-        $attachment->auth()->user()->id;
+        $attachment->company_id = auth()->user()->id;
         $attachment->save();
 
         Toastr::success('Attachment has been uploaded and visible from the main website.', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect('employer/manage-attachment-slots');
     }
 
-    public function allattachmentslots(){
-        $attachments = Job::where('company_id', auth()->user()->id)->get();
+    public function allattachmentslots()
+    {
+        $attachments = Job::where(['company_id' => auth()->user()->id, 'attachment_status' => "Active"])->get();
         return view('companies.all-attachment-slots', compact('attachments'));
+    }
+    public function editattachmentslot($id)
+    {
+        $task = Job::findOrfail($id);
+        $courses = Course::all();
+        $categories = Category::all();
+        return view('companies.edit-attachment-slot', compact(['task', 'courses', 'categories']));
+    }
+    public function updateattachmentslots(Request $request, $id)
+    {
+        $this->validate($request, [
+            'attachment_title' => 'required|string|max:50',
+            'attachment_slots' => 'required|numeric|min:1',
+            'appreciation_token' => 'required|numeric|min:00',
+            'gender' => 'required',
+            'course' => 'required',
+            'category' => 'required',
+            'attachment_start' => 'required|date_format:Y-m|after_or_equal:' . Carbon::now()->format('Y-m'),
+            'attachment_end' => 'required|date_format:Y-m|after_or_equal:attachment_start',
+            'task_description' => 'required',
+            'requirements_needed' => 'required|string',
+            'additional_information' => 'nullable|string'
+        ]);
+
+        $attachment = Job::findOrFail($id);
+        $attachment->job_title = $request->input('attachment_title');
+        $attachment->job_description = $request->input('task_description');
+        $attachment->slots_needed = $request->input('attachment_slots');
+        $attachment->job_category =  implode(',', (array) $request->get('category'));
+        $attachment->course =  implode(',', (array) $request->get('course'));
+        $attachment->appreciation_token = $request->input('appreciation_token');
+        $attachment->attachment_start = $request->input('attachment_start');
+        $attachment->attachment_end = $request->input('attachment_end');
+        $attachment->gender = $request->input('gender');
+        $attachment->qualification = $request->input('requirements_needed');
+        $attachment->additional_information = $request->input('additional_information');
+        $attachment->attachment_status = "Active";
+        $attachment->company_id = auth()->user()->id;
+        $attachment->save();
+
+        Toastr::warning('Attachment has been updated successfuly', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect('employer/manage-attachment-slots');
+    }
+    public function updateopportunityslotstatus($id)
+    {
+
+        $task = Job::findOrfail($id);
+        $task->attachment_status = "Closed";
+        $task->save();
+
+        Toastr::error('Attachment slot has been closed and wont be visible from the website', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect('employer/manage-closed-attachment-slots');
+    }
+    public function closedattachmentslots()
+    {
+        $attachments = Job::where(['company_id' => auth()->user()->id, 'attachment_status' => "Closed"])->get();
+        return view('companies.all-closed-attachment-slots', compact('attachments'));
+    }
+    public function deleteattachmentslots($id)
+    {
+        $task = Job::findOrfail($id);
+        $task->delete();
+
+        // $jobs = Application::where('job_id', )
+        Toastr::error('Attachment slot has been closed and wont be visible from the website', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect('employer/manage-closed-attachment-slots');
     }
 }

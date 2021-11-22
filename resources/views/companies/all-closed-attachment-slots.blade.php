@@ -13,7 +13,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">All Attachments Slots</h3>
+                            <h3 class="box-title">All Closed Attachments Slots</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -28,7 +28,6 @@
                                             <th>Courses</th>
                                             <th>Timeline</th>
                                             <th>Action</th>
-                                            <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
@@ -39,23 +38,20 @@
                                                     <td>{{ $attachment->job_title }}</td>
                                                     <td>Kshs. {{ $attachment->appreciation_token }}</td>
                                                     <td> {{ $attachment->course }}</td>
-                                                    <td>{{ $attachment->attachment_start }} - {{ $attachment->attachment_end }}</td>
+                                                    <td>{{ $attachment->attachment_start }} -
+                                                        {{ $attachment->attachment_end }}</td>
 
                                                     <td>{{ $attachment->updated_at->addHours(3)->format('d-m-y h:i:s a') }}
                                                     </td>
 
                                                     <td>
                                                         <a href="{{ url('employer/view-attachment-applications', $attachment->id) }}"
-                                                            class="btn btn-success">View applications</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ url('employer/edit-attachment-slot', $attachment->id) }}"
-                                                            class="btn btn-success">Edit</a>
+                                                            class="btn btn-sm btn-success">View applications</a>
                                                     </td>
                                                     <td>
 
-                                                        <a href="{{ url('employer/close-attachment-applications', $attachment->id) }}"
-                                                            class="btn btn-warning">Close</a>
+                                                        <a href="{{ url('employer/delete-attachment-applications', $attachment->id) }}"
+                                                            class="btn btn-sm btn-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

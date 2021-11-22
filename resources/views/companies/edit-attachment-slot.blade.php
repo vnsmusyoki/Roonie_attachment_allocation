@@ -20,10 +20,10 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form class="default-form" action="{{ url('employer/upload_attachment_slots') }}"
+                            <form class="default-form" action="{{ url('employer/update_attachment_slots', $task->id) }}"
                                 method="post">
                                 @csrf
-
+                                @method('PATCH')
                                 <div class="row">
                                     <!-- Input -->
                                     <div class="form-group col-lg-6 col-md-12">
@@ -31,7 +31,7 @@
                                         <div class="controls">
                                             <input type="text" name="attachment_title" placeholder="Invisionn"
                                                 class="form-control @error('attachment_title') is-invalid @enderror"
-                                                value="{{ old('attachment_title') }}">
+                                                value="{{ $task->job_title }}">
                                             @error('attachment_title')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -44,7 +44,7 @@
                                         <h5>Slots Needed</h5>
                                         <div class="controls">
                                             <input type="number" name="attachment_slots" placeholder="1"
-                                                value="{{ old('attachment_slots') }}"
+                                                value="{{ $task->slots_needed }}"
                                                 class="form-control @error('attachment_slots') is-invalid @enderror">
                                             @error('attachment_slots')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -58,7 +58,7 @@
                                         <h5>Token</h5>
                                         <div class="controls">
                                             <input type="number" name="appreciation_token" placeholder=""
-                                                value="{{ old('appreciation_token') }}"
+                                                value="{{ $task->appreciation_token }}"
                                                 class="form-control @error('appreciation_token') is-invalid @enderror">
                                             @error('appreciation_token')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -72,7 +72,7 @@
                                         <div class="controls">
                                             <select name="gender"
                                                 class="form-control @error('gender') is-invalid @enderror">
-                                                <option value="">Select</option>
+                                                <option value="">{{ $task->gender }}</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                                 <option value="Any">Any</option>
@@ -88,7 +88,7 @@
                                         <h5>Starting from</h5>
                                         <div class="controls">
                                             <input type="month" name="attachment_start" placeholder=""
-                                                value="{{ old('attachment_start') }}"
+                                                value="{{ $task->attachment_start }}"
                                                 class="form-control @error('attachment_start') is-invalid @enderror">
                                             @error('attachment_start')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -100,7 +100,7 @@
                                         <h5>End at</h5>
                                         <div class="controls">
                                             <input type="month" name="attachment_end" placeholder=""
-                                                value="{{ old('attachment_end') }}"
+                                                value="{{ $task->attachment_end }}"
                                                 class="form-control @error('attachment_end') is-invalid @enderror">
                                             @error('attachment_end')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -112,8 +112,9 @@
                                         <h5>Course(s)</h5>
                                         <div class="controls">
                                             <select data-placeholder="courses" name="course[]"
-                                                class="form-control multiple @error('course') is-invalid @enderror"
-                                                multiple tabindex="4">
+                                                class="form-control multiple @error('course') is-invalid @enderror" multiple
+                                                tabindex="4">
+                                                <option value="">selected - {{ $task->course }}</option>
                                                 @foreach ($courses as $course)
                                                     <option value="{{ $course->courses }}">{{ $course->courses }}
                                                     </option>
@@ -132,6 +133,9 @@
                                             <select data-placeholder="Categories" name="category[]"
                                                 class="form-control multiple @error('category') is-invalid @enderror"
                                                 multiple tabindex="4">
+                                                <option value="">
+                                                    <h6 class="text-danger">selected - {{ $task->job_category }}</h6>
+                                                </option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->name }}">{{ $category->name }}
                                                     </option>
@@ -149,7 +153,7 @@
                                         <h5>Task Description</h5>
                                         <div class="controls">
                                             <textarea name="task_description" rows="5" class="form-control"
-                                                placeholder="describe task description here">{{ old('task_description') }}</textarea>
+                                                placeholder="describe task description here">{{ $task->job_description }}</textarea>
                                             @error('task_description')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -159,7 +163,7 @@
                                         <h5>Task Requirements/Qualifications Needed</h5>
                                         <div class="controls">
                                             <textarea name="requirements_needed" rows="5" class="form-control"
-                                                placeholder="describe task description here">{{ old('requirements_needed') }}</textarea>
+                                                placeholder="describe task description here">{{ $task->qualification }}</textarea>
                                             @error('requirements_needed')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -169,7 +173,7 @@
                                         <h5>Additional Information (optional)</h5>
                                         <div class="controls">
                                             <textarea name="additional_information" rows="5" class="form-control"
-                                                placeholder="describe task description here">{{ old('additional_information') }}</textarea>
+                                                placeholder="describe task description here">{{ $task->additional_information }}</textarea>
                                             @error('additional_information')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -179,7 +183,7 @@
 
                                     <!-- Input -->
                                     <div class="form-group col-lg-6 col-md-12">
-                                        <button type="submit" class="btn btn-rounded btn-danger">Upload Attachment
+                                        <button type="submit" class="btn btn-primary">Update Attachment
                                             Slots</button>
                                     </div>
                                 </div>

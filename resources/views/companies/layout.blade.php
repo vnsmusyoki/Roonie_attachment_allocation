@@ -151,6 +151,20 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ url('employer/manage-attachment-slots') }}">
+                            <i class="icon-Briefcase"><span class="path1"></span><span
+                                    class="path2"></span></i>
+                            <span>Manage Attachment Slots</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('employer/manage-closed-attachment-slots') }}">
+                            <i class="icon-Briefcase"><span class="path1"></span><span
+                                    class="path2"></span></i>
+                            <span>Closed Attachment Slots</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>

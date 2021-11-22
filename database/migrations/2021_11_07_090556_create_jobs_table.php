@@ -19,8 +19,10 @@ class CreateJobsTable extends Migration
             $table->longText('job_description')->nullable();
             $table->longText('slots_needed')->nullable();
             $table->string('job_category')->nullable();
-            $table->integer('course')->nullable();
+            $table->string('course')->nullable();
             $table->string('appreciation_token')->nullable();
+            $table->string('attachment_start')->nullable();
+            $table->string('attachment_end')->nullable();
             $table->string('gender')->nullable();
             $table->longText('qualification')->nullable();
             $table->longText('additional_information')->nullable();

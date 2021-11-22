@@ -90,16 +90,16 @@
                                     </div>
                                     <!-- Search Select -->
                                     <div class="form-group col-lg-6 col-md-12">
-                                        <h5>Multiple Select boxes </h5>
+                                        <h5>Areas we Specialise in</h5>
                                         <div class="controls">
                                             <select data-placeholder="Categories" name="category[]"
                                                 class="form-control multiple @error('category') is-invalid @enderror"
                                                 multiple tabindex="4">
-                                                <option value="Banking">Banking</option>
-                                                <option value="Digital&Creative">Digital & Creative</option>
-                                                <option value="Retail">Retail</option>
-                                                <option value="Human Resources">Human Resources</option>
-                                                <option value="Management">Management</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->name }}">{{ $category->name }}
+                                                    </option>
+                                                @endforeach
+
                                             </select>
                                             @error('category')
                                                 <div class="alert alert-danger">{{ $message }}</div>
