@@ -101,3 +101,10 @@ Route::prefix('student')->group(function () {
 });
 
 
+Route::prefix('admin')->group(function () {
+    Route::get('all-courses', [ContentCOntroller::class, 'allcourses']);
+    Route::post('store-new-course', [ContentCOntroller::class, 'uploadcourses']);
+    Route::get('all-courses/edit/{id}', [ContentCOntroller::class, 'editcourse']);
+    Route::patch('update-new-course/{id}', [ContentCOntroller::class, 'updatecourse']);
+    Route::delete('all-courses/delete/{id}', [ContentCOntroller::class, 'deletecourse']);
+});

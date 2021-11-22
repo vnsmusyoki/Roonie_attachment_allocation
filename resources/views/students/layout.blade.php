@@ -59,7 +59,7 @@
                         <li class="btn-group nav-item d-lg-flex d-none align-items-center">
                             <p class="mb-0 text-fade pr-10 pt-5">
                                 {{ Carbon\Carbon::now()->addHours(3)->format('l, d-m-y
-                                                                                                                                                                                                                                h:i:s a') }}
+                                                                                                                                                                                                                                                                                                h:i:s a') }}
                             </p>
                         </li>
                         <li class="btn-group nav-item d-lg-inline-flex d-none">
@@ -119,14 +119,23 @@
                 <div class="user-profile px-20 pt-15 pb-10">
                     <div class="d-flex align-items-center">
                         <div class="image">
-                            <img src="{{ asset('main/images/avatar/avatar-13.png') }}"
-                                class="avatar avatar-lg bg-primary-light rounded100" alt="User Image">
+
+                            @if (Auth::user()->picture == null)
+                                <img src="{{ asset('main/images/avatar/avatar-13.png') }}"
+                                    class="avatar avatar-lg bg-primary-light rounded100" alt="User Image">
+                            @else
+
+                                <img src="{{ asset('storage/studentprofiles/'.Auth::user()->picture) }}"
+                                    class="avatar avatar-lg bg-primary-light rounded100" alt="">
+                            @endif
+
                         </div>
                         <div class="info">
                             <a class="dropdown-toggle px-20" data-toggle="dropdown"
                                 href="#">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('student/edit-profile') }}"><i class="ti-user"></i> Profile</a>
+                                <a class="dropdown-item" href="{{ url('student/edit-profile') }}"><i
+                                        class="ti-user"></i> Profile</a>
 
                             </div>
                         </div>

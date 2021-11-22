@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Job;
 use App\Models\StudentProfile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+
 class StudentAccountController extends Controller
 {
     public function __construct()
@@ -16,7 +19,14 @@ class StudentAccountController extends Controller
 
     public function index()
     {
-        return view('students.dashboard');
+        $completedsetup = StudentProfile::where('student_id', auth()->user()->id)->count();
+        if ($completedsetup == 0) {
+            return redirect('student/edit-profile');
+        } else {
+            $completeddata = StudentProfile::where('student_id', auth()->user()->id)->get()->first();
+
+            return view('students.dashboard', compact('completeddata'));
+        }
     }
     public function feestatement()
     {
@@ -29,13 +39,13 @@ class StudentAccountController extends Controller
     public function editprofile()
     {
         $student = StudentProfile::where('student_id', auth()->user()->id)->count();
-        if($student == 1){
+        if ($student == 1) {
             Toastr::error('You have already created Your details.Consider Updating the record', 'Success', ["positionClass" => "toast-top-right"]);
             return redirect()->back();
-        }else{
-            return view('students.edit-profile');
+        } else {
+            $courses = Course::all();
+            return view('students.edit-profile', compact('courses'));
         }
-
     }
     public function updateprofile(Request $request)
     {
@@ -59,10 +69,16 @@ class StudentAccountController extends Controller
         $path = $request->picture->storeAs('studentprofiles', $filenameToStore, 'public');
         $student->picture = $filenameToStore;
         $student->save();
+
+        $updateuser = User::findOrFail(auth()->user()->id);
+        $updateuser->picture = $filenameToStore;
+        $updateuser->save();
+        
         Toastr::success('Profile has been updated.', 'Success', ["positionClass" => "toast-top-right"]);
-        return redirect()->route('employer');
+        return redirect()->route('student');
     }
-    public function allattachments(){
+    public function allattachments()
+    {
         $categories = Job::all();
         return view('students.all-attachments', compact('categories'));
     }

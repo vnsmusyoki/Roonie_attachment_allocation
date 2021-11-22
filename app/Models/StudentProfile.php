@@ -10,7 +10,7 @@ class StudentProfile extends Model
     use HasFactory;
     public function studentprofileuser()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'student_id', 'id');
     }
     protected $fillable = [
         'student_id', 'school', 'course', 'year_of_study', 'picture'

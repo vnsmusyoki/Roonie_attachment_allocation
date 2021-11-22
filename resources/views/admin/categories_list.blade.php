@@ -1,21 +1,19 @@
-@extends('admin.main')
+@extends('admin.layout')
 
-@section('main')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+@section('content') 
 	<div class="container-full">
-	 
+
 
 		<!-- Main content -->
 		<section class="content">
 
 			<div class="row">
- 
+
 				<div class="col-12">
-  
+
 					<div class="box">
 						<div class="box-header with-border">
-							<h3 class="box-title">All Categories Uploaded</h3> 
+							<h3 class="box-title">All Categories Uploaded</h3>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
@@ -27,7 +25,7 @@
 											<th>Name</th>
 											<th>Date Created</th>
 											<th>last Update</th>
-											<th>Edit</th> 
+											<th>Edit</th>
 											<th>Delete</th>
 										</tr>
 									</thead>
@@ -39,12 +37,12 @@
 												 <td>{{ $category->name }}</td>
 												 <td>{{ $category->created_at->addHours(3)->format('d-m-y h:i:s a') }}</td>
 												 <td>{{ $category->updated_at->addHours(3)->format('d-m-y h:i:s a') }}</td>
-											 
+
 												 <td>
 													<a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
 												 </td>
 												 <td>
-													
+
 													<form action="{{ route('category.destroy', $category->id)}}" method="post">
 														@csrf
 														@method('DELETE')
@@ -61,7 +59,7 @@
 											<th>Name</th>
 											<th>Date Created</th>
 											<th>last Update</th>
-											<th>Edit</th> 
+											<th>Edit</th>
 											<th>Delete</th>
 										</tr>
 									</tfoot>
@@ -77,6 +75,4 @@
 		</section>
 		<!-- /.content -->
 	</div>
-</div>
-<!-- /.content-wrapper -->
 @endsection

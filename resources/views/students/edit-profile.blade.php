@@ -47,9 +47,10 @@
                                                 <select name="course_studying"
                                                     class="form-control @error('course_studying') is-invalid @enderror">
                                                     <option value="">select</option>
-                                                    <option value="Information Technlogy">Information Technology</option>
-                                                    <option value="Computer Science">Computer Science</option>
-                                                    <option value="Acturial Science">Acturial Science</option>
+                                                    @foreach ($courses as $course)
+                                                        <option value="{{ $course->courses }}">{{ $course->courses }}</option>
+                                                    @endforeach
+                                                    
                                                 </select>
                                             </div>
                                             @error('course_studying')
