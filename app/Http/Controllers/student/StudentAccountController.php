@@ -82,4 +82,8 @@ class StudentAccountController extends Controller
         $categories = Job::where('attachment_status', "Active")->get();
         return view('students.all-attachments', compact('categories'));
     }
+    public function applyattachment($id){
+        $job = Job::findOrfail($id);
+        return view('students.apply-attachment-link', compact('job'));
+    }
 }
