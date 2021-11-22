@@ -173,4 +173,7 @@ class EmployerAccountController extends Controller
 
         return view('theme.employer.view_pdf', compact('book'));
     }
+    public function uploadopportunity(){
+        return view('companies.upload-opportunity');
+    }
 }

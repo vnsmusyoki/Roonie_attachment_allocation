@@ -43,6 +43,7 @@ Route::prefix('employer')->group(function(){
     Route::get('edit-profile', [EmployerAccountController::class, 'editprofile']);
     Route::post('upload_company_profile', [EmployerAccountController::class, 'storeCompanyProfile']);
     Route::get('shortlist/{id}', [EmployerAccountController::class, 'shortlist'])->name('shortlist');
+    Route::get('upload-attachment-details', [EmployerAccountController::class, 'uploadopportunity']);
     Route::get('reject/{id}', [EmployerAccountController::class, 'reject'])->name('reject');
     Route::get('closed/{id}', [EmployerAccountController::class, 'closed'])->name('closed');
     Route::get('activate/{id}', [EmployerAccountController::class, 'activate'])->name('activate');

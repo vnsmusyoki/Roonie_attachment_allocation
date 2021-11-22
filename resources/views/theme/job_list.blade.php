@@ -7,7 +7,7 @@
             <div class="title-outer">
                 <h1>Find Jobs</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ url('/')}}">Home</a></li>
                     <li>Jobs</li>
                 </ul>
             </div>

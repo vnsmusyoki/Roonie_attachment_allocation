@@ -1,13 +1,12 @@
 
-@extends('students.layout')
-
+@extends('companies.layout')
 @section('content')
 <div class="container-full">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="page-title">Apply Today</h3>
+                <h3 class="page-title">Create Category List</h3>
             </div>
 
         </div>

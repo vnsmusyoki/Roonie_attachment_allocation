@@ -37,7 +37,10 @@
             <!--Nav Outer -->
             <div class="nav-outer">
                 <div class="logo-box">
-                    <div class="logo"><a href="/"><img src="{{asset('frontend/images/attachment_logo.png')}}" alt="" title=""></a></div>
+                    <div class="logo"><a href="/">
+                        {{-- <img src="{{asset('frontend/images/attachment_logo.png')}}" alt="" title=""></a> --}}
+                        <strong>Attachments</strong>
+                    </div>
                 </div>
 
                 <nav class="nav main-menu">
@@ -124,7 +127,7 @@
 
             <div class="outer-box">
                 <!-- Add Listing -->
-               
+
                 <div class="btn-box">
                     @guest
                         @if (Route::has('login'))
@@ -153,14 +156,17 @@
                             </div>
                         </li>
                     @endguest
-                    <a href="dashboard-post-job.html" class="theme-btn btn-style-one">Job Post</a>
+                    <a href="" class="theme-btn btn-style-one">Job Post</a>
                 </div>
             </div>
         </div>
 
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <div class="logo"><a href="/"><img src="{{asset('frontend/images/logo.svg')}}" alt="" title=""></a></div>
+            <div class="logo"><a href="/">
+                {{-- <img src="{{asset('frontend/images/logo.svg')}}" alt="" title=""></a> --}}
+                <strong>Students Attachment Allocation</strong>
+            </div>
 
             <!--Nav Box-->
             <div class="nav-outer clearfix">
@@ -168,7 +174,7 @@
                 <div class="outer-box">
                     <!-- Login/Register -->
                     <div class="login-box">
-                        <a href="login-popup.html" class="call-modal"><span class="icon-user"></span></a>
+                        <a href="{{ route('login')}}" class="call-modal"><span class="icon-user"></span></a>
                     </div>
 
                     <a href="#nav-mobile" class="mobile-nav-toggler"><span class="flaticon-menu-1"></span></a>

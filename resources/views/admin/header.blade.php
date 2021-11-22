@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('main/main/css/vendors_css.css') }}">
 
     <!-- Style-->
-    <link rel="stylesheet" href="{{ asset('main/main/css/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('main/main/css/skin_color.css')}}">
+    <link rel="stylesheet" href="{{ asset('main/main/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/main/css/skin_color.css') }}">
 
     <script src="{{ asset('main/main/js/jquery-3.6.0.min.js') }}"></script>
 
@@ -37,12 +37,7 @@
                 <!-- Logo -->
                 <a href="{{ route('admin') }}" class="logo">
                     <!-- logo-->
-                    <div class="logo-lg">
-                        <span class="light-logo"><img src="{{ asset('main/images/logo-dark-text.png') }}"
-                                alt="logo"></span>
-                        <span class="dark-logo"><img src="{{ asset('main/images/logo-light-text.png')}}"
-                                alt="logo"></span>
-                    </div>
+                    <strong>Admin Dashboard</strong>
                 </a>
             </div>
             <!-- Header Navbar -->
@@ -62,8 +57,10 @@
                 <div class="navbar-custom-menu r-side">
                     <ul class="nav navbar-nav">
                         <li class="btn-group nav-item d-lg-flex d-none align-items-center">
-                            <p class="mb-0 text-fade pr-10 pt-5">{{ Carbon\Carbon::now()->addHours(3)->format('l, d-m-y
-                                h:i:s a') }}</p>
+                            <p class="mb-0 text-fade pr-10 pt-5">
+                                {{ Carbon\Carbon::now()->addHours(3)->format('l, d-m-y
+                                                                h:i:s a') }}
+                            </p>
                         </li>
                         <li class="btn-group nav-item d-lg-inline-flex d-none">
                             <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen"
@@ -88,7 +85,8 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown"
                                 title="User">
-                                <i class="icon-User"><span class="path1"></span><span class="path2"></span></i>
+                                <i class="icon-User"><span class="path1"></span><span
+                                        class="path2"></span></i>
                             </a>
                             <ul class="dropdown-menu animated flipInX">
                                 <li class="user-body">
@@ -104,7 +102,8 @@
                                         <i class="ti-lock text-muted mr-2"></i> {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </li>

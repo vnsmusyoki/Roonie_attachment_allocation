@@ -9,7 +9,7 @@
                 <div class="content-column col-lg-7 col-md-12 col-sm-12">
                     <div class="inner-column wow fadeInUp" data-wow-delay="1000ms">
                         <div class="title-box">
-                            <h3>There Are <span class="colored">93</span> Postings Here<br> For you!</h3>
+                            <h3>There Are <span class="colored">01</span> Postings Here<br> For you!</h3>
                             <div class="text">Find Attachment opportunities here</div>
                         </div>
 
