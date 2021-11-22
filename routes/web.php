@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
 Route::prefix('employer')->group(function(){
     Route::get('dashboard', [EmployerAccountController::class, 'employerDashboard'])->name('employer');
     Route::get('applicants', [EmployerAccountController::class, 'applicants'])->name('applicants');
+    Route::get('edit-profile', [EmployerAccountController::class, 'editprofile']);
+    Route::post('upload_company_profile', [EmployerAccountController::class, 'storeCompanyProfile']);
     Route::get('shortlist/{id}', [EmployerAccountController::class, 'shortlist'])->name('shortlist');
     Route::get('reject/{id}', [EmployerAccountController::class, 'reject'])->name('reject');
     Route::get('closed/{id}', [EmployerAccountController::class, 'closed'])->name('closed');

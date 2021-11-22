@@ -19,15 +19,16 @@
                             </div>
 
                             <div class="widget-content">
-                                <form class="default-form" action="{{ route('store-company-profile') }}" method="post"
+                                <form class="default-form" action="{{ url('store-company-profile') }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="uploading-outer">
                                         <div class="uploadButton">
-                                            <input class="form-control @error('logo') is-invalid @enderror" type="file" name="logo" />
+                                            <input class="form-control @error('logo') is-invalid @enderror" type="file"
+                                                name="logo" />
                                             @error('logo')
-                                            <div class="alert alert-danger">{{ $message }}
-                                            </div>
+                                                <div class="alert alert-danger">{{ $message }}
+                                                </div>
                                             @enderror
                                             {{-- <label class="uploadButton-button ripple-effect" for="upload">Browse
                                                 Cover</label>

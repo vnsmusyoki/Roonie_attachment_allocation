@@ -59,9 +59,8 @@ class StudentAccountController extends Controller
         $path = $request->picture->storeAs('studentprofiles', $filenameToStore, 'public');
         $student->picture = $filenameToStore;
         $student->save();
-
         Toastr::success('Profile has been updated.', 'Success', ["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        return redirect()->route('employer');
     }
     public function allattachments(){
         $categories = Job::all();

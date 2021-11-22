@@ -37,7 +37,7 @@
                 <!-- Logo -->
                 <a href="{{ route('student') }}" class="logo">
                     <!-- logo-->
-                    <strong>Student Dashboard</strong>
+                    <strong>Company Dashboard</strong>
                 </a>
             </div>
             <!-- Header Navbar -->
@@ -126,7 +126,7 @@
                             <a class="dropdown-toggle px-20" data-toggle="dropdown"
                                 href="#">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('student/edit-profile') }}"><i class="ti-user"></i> Profile</a>
+                                <a class="dropdown-item" href="{{ url('employer/edit-profile') }}"><i class="ti-user"></i> Profile</a>
 
                             </div>
                         </div>
@@ -137,17 +137,17 @@
                 <ul class="sidebar-menu" data-widget="tree">
 
                     <li>
-                        <a href="{{ route('student') }}">
+                        <a href="{{ route('employer') }}">
                             <i class="icon-Layout-4-blocks"><span class="path1"></span><span
                                     class="path2"></span></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('student/all-attachments') }}">
+                        <a href="{{ url('employer/upload-attachment-details') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>
-                            <span>Attachment Categories</span>
+                            <span>Add Attachment</span>
                         </a>
                     </li>
                     <li>
