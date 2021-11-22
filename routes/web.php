@@ -92,6 +92,7 @@ Route::prefix('student')->group(function () {
     Route::get('feestatement', [StudentAccountController::class, 'feestatement']);
     Route::get('account-password', [StudentAccountController::class, 'accountpassword']);
     Route::get('edit-profile', [StudentAccountController::class, 'editprofile']);
+    Route::post('edit_profile', [StudentAccountController::class, 'updateprofile']);
 });
 
 

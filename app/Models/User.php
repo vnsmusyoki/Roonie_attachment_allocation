@@ -20,7 +20,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
 
- 
+     public function userstudentprofile(){
+         return $this->belongsTo(StudentProfile::class, 'student_id','id');
+     }
+
     protected $fillable = [
         'name',
         'email',

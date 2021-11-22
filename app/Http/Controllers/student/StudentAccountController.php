@@ -24,4 +24,13 @@ class StudentAccountController extends Controller
     public function editprofile(){
         return view('students.edit-profile');
     }
+    public function updateprofile(Request $request){
+
+        $this->validate($request,[
+            'school_name'=>'required',
+            'course_studying'=>'required',
+            'year_of_study'=>'required',
+            'picture'=>'required|image| mimes:png,jpeg, jpg|max:10080'
+        ]);
+    }
 }
