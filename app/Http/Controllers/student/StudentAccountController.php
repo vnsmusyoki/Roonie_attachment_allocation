@@ -73,13 +73,13 @@ class StudentAccountController extends Controller
         $updateuser = User::findOrFail(auth()->user()->id);
         $updateuser->picture = $filenameToStore;
         $updateuser->save();
-        
+
         Toastr::success('Profile has been updated.', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect()->route('student');
     }
     public function allattachments()
     {
-        $categories = Job::all();
+        $categories = Job::where('attachment_status', "Active")->get();
         return view('students.all-attachments', compact('categories'));
     }
 }

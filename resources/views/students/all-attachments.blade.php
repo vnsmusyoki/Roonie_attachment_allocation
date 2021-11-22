@@ -15,13 +15,13 @@
                         <div class="box-body">
                             <div class="table-responsive">
                                 <table id="example"
-                                    class="table table-sm table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                    class="table table-sm text-sm table-bordered table-hover display nowrap margin-top-10 w-p100">
                                     <thead>
-                                        <tr> 
+                                        <tr>
                                             <th>Company</th>
                                             <th>Title</th>
                                             <th>Category</th>
-                                            <th>Qualifications</th>
+                                            <th>Course</th>
                                             <th>Uploaded</th>
                                             <th>Location</th>
                                             <th>Action</th>
@@ -31,10 +31,10 @@
                                         @if ($categories->count() >= 1)
                                             @foreach ($categories as $key => $category)
                                                 <tr>
-                                                    <td>{{ $category->company_id }}</td>
+                                                    <td>{{ $category->company->name }}</td>
                                                     <td>{{ $category->job_title }}</td>
                                                     <td>{{ $category->job_category }}</td>
-                                                    <td>{{ $category->qualification }}</td>
+                                                    <td>{{ $category->course }}</td> 
                                                     <td>{{ $category->created_at->addHours(3)->format('d-m-y h:i:s a') }}
                                                     </td>
                                                     <td>{{ $category->city }} - {{ $category->address }}</td>
@@ -48,17 +48,7 @@
                                             @endforeach
                                         @endif
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Company</th>
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Qualifications</th>
-                                            <th>Uploaded</th>
-                                            <th>Location</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
+
                                 </table>
                             </div>
                         </div>
