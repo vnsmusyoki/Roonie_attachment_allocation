@@ -47,13 +47,13 @@
                     <ul class="navigation" id="navbar">
                         <li class="current"><a href="/">Home</a></li>
                         <li class="dropdown has-mega-menu" id="has-mega-menu">
-                            <span>Find Jobs</span>
+                            <span>Attachments</span>
                             <div class="mega-menu" id="mega-menu">
                                 <div class="mega-menu-bar row">
                                     <div class="column col-lg-3 col-md-3 col-sm-12">
                                         <h3>Jobs Listing</h3>
                                         <ul>
-                                            <li><a href="{{route('job-list')}}">Jobs List</a></li>
+                                            <li><a href="{{route('job-list')}}">All Opportunities</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -61,24 +61,10 @@
                         </li>
 
                         <li class="dropdown">
-                            <span>Employers</span>
+                            <span>Account</span>
                             <ul>
-                                <li class="dropdown">
-                                    <span>Employers List</span>
-                                    <ul>
-                                        <li><a href="{{route('employer-list')}}">Employers LIst</a></li>
 
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown">
-                                    <span>Employers Single</span>
-                                    <ul>
-                                        <li><a href="{{('employer-single-pange')}}">Employers Single</a></li>
-
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('employer')}}">Employers Dashboard</a></li>
+                                <li><a href="{{route('login')}}">Account LOgin</a></li>
                             </ul>
                         </li>
 
@@ -86,26 +72,19 @@
                             <span>Candidates</span>
                             <ul>
                                 <li class="dropdown">
-                                    <span>Candidates List</span>
+                                    <span>Apply Attachment</span>
                                     <ul>
-                                        <li><a href="{{route('candidate-list')}}">Candidates LIst</a></li>
+                                        <li><a href="{{route('login')}}">Student</a></li>
 
                                     </ul>
                                 </li>
 
-                                <li class="dropdown">
-                                    <span>Candidates Single</span>
-                                    <ul>
-                                        <li><a href="{{route('candidate-single-pange')}}">Candidates Single</a></li>
 
-                                    </ul>
-                                </li>candidate-dashboard
-                                <li><a href="{{route('candidate-dashboard')}}">Candidates Dashboard</a></li>
                             </ul>
                         </li>
 
                         <li class="mm-add-listing">
-                            <a href="add-listing.html" class="theme-btn btn-style-one">Job Post</a>
+                            <a href="{{ route('job-list') }}" class="theme-btn btn-style-one">Job Post</a>
                             <span>
                                 <span class="contact-info">
                                     <span class="phone-num"><span>Call us</span><a href="tel:1234567890">+25473 456 7890</a></span>
@@ -174,7 +153,7 @@
                 <div class="outer-box">
                     <!-- Login/Register -->
                     <div class="login-box">
-                        <a href="{{ route('login')}}" class="call-modal"><span class="icon-user"></span></a>
+                        <a href="{{ route('login')}}" ><span class="icon-user"></span></a>
                     </div>
 
                     <a href="#nav-mobile" class="mobile-nav-toggler"><span class="flaticon-menu-1"></span></a>

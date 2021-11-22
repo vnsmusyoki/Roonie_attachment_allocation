@@ -15,11 +15,15 @@
 
                         <!-- Job Search Form -->
                         <div class="job-search-form">
-                            <form method="post" action="https://creativelayers.net/themes/superio/job-list-v10.html">
+                            <form method="post" action="">
                                 <div class="row">
                                     <div class="form-group col-lg-5 col-md-12 col-sm-12">
                                         <span class="icon flaticon-search-1"></span>
-                                        <input type="text" name="field_name" placeholder="Course Name">
+                                        
+                                        <select name="" id="" >
+                                            <option value="">select</option>
+                                            <option value="">Course 1</option>
+                                        </select>
                                     </div>
                                     <!-- Form Group -->
                                     <div class="form-group col-lg-4 col-md-12 col-sm-12 location">

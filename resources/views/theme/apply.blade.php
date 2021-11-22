@@ -7,7 +7,7 @@
     <div class="dashboard-outer">
         <div class="upper-title-box">
             <h3>Apply Now</h3>
-            {{-- <div class="text">Ready to jump back in?</div> --}}
+           
         </div>
 
         <div class="row">
@@ -26,15 +26,7 @@
                              @csrf
                                 <div class="row">
 
-                                    {{-- <div class="form-group col-lg-6 col-md-12">
-                                        <div class="uploading-outer">
-                                            <div class="uploadButton">
-                                                <input class="uploadButton-input" type="file"  name="attachments[]" accept="image/*, application/pdf" id="upload" multiple/>
-                                                <label class="uploadButton-button ripple-effect" for="upload">Add Portfolio</label>
-                                                <span class="uploadButton-file-name"></span>
-                                            </div>
-                                        </div>
-                                    </div> --}}
+
                                     <div class="form-group col-lg-12 col-md-12">
                                         <label>Upload your CV</label>
                                         <input type="file" name="resume" class="form-control @error('resume') is-invalid @enderror">
@@ -52,10 +44,6 @@
                                             </div>
                                         @enderror
                                     </div>
-
-
-
-
                                     <!-- Input -->
                                     <div class="form-group col-lg-12 col-md-12">
                                         <button class="theme-btn btn-style-one">Save</button>
