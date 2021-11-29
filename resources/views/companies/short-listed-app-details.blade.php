@@ -66,9 +66,8 @@
                     <a href="{{ asset('storage/attachment_letter/' . $attachment->attachmentletters) }}"
                         class="btn btn-sm btn-block btn-primary" download="">{{ $attachment->attachment_letter }}</a>
                     <hr>
-                    <a href="{{ url('employer/accept-student-application/' . $attachment->id) }}"
-                        class="btn btn-rounded btn-danger">Accept Attachment
-                        Application</a>
+                    <a href="{{ url('employer/short-listed-applicants') }}"
+                        class="btn btn-rounded btn-danger">Return Back</a>
                 </div>
             </div>
             <br>

@@ -349,6 +349,45 @@ class EmployerAccountController extends Controller
             return redirect('employer/manage-closed-attachment-slots');
         }
 
-       return redirect('employer/manage-closed-attachment-slots');
+        return redirect('employer/manage-closed-attachment-slots');
+    }
+    public function shortlistedapplicants()
+    {
+        $company = Company::where('manager_id', auth()->user()->id)->get()->first();
+        $applications = Application::where(['company_id' => $company->id, 'application_status' => 'Shortlisted'])->get();
+
+        return view('companies.shortlisted-applicants', compact('applications'));
+    }
+    public function viewshortlistedapplication($id)
+    {
+        $company = Company::where('manager_id', auth()->user()->id)->get()->first();
+        $attachment = Application::findOrFail($id);
+        $student = StudentProfile::where('student_id', $attachment->student_id)->get()->first();
+
+        $job = Job::where('id', $attachment->attachment_id)->get()->first();
+
+        $applications = Application::where(['company_id' => $company->id, 'attachment_id' => $id])->get();
+        return view('companies.short-listed-app-details', compact(['applications', 'job', 'student', 'company', 'attachment']));
+    }
+
+    public function managecompanyprofile()
+    {
+        $checkcompany = Company::where('manager_id', auth()->user()->id)->count();
+        if ($checkcompany  == 0) {
+
+            return redirect()->to('employer/edit-profile');
+        } else {
+            $categories = Category::all();
+            $courses = Course::all();
+            $company = Company::where('manager_id', auth()->user()->id)->get()->first();
+            $categories = Category::all();
+            $courses = Course::all();
+            return view('companies.manage-company-profile', compact(['courses', 'categories', 'company']));
+        }
+    }
+
+    public function managesettings()
+    {
+        return view('companies.account-settings');
     }
 }

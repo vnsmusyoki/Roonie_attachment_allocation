@@ -58,6 +58,10 @@ Route::prefix('employer')->group(function(){
     Route::get('view-attachment-applications/{id}', [EmployerAccountController::class, 'viewstudentapplications']);
     Route::get('task-view-application/{id}', [EmployerAccountController::class, 'taskviewapplication']);
     Route::get('accept-student-application/{id}', [EmployerAccountController::class, 'acceptstudentapplication']);
+    Route::get('short-listed-applicants', [EmployerAccountController::class, 'shortlistedapplicants']);
+    Route::get('view-shortlisted-application/{id}', [EmployerAccountController::class, 'viewshortlistedapplication']);
+    Route::get('manage-company-profile', [EmployerAccountController::class, 'managecompanyprofile']);
+    Route::get('manage-settings', [EmployerAccountController::class, 'managesettings']);
 
 
 

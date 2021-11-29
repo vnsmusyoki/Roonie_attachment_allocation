@@ -166,24 +166,24 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('employer/short-listed-applicants') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>
                             <span>Short Listed Applicants</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('employer/manage-company-profile') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>
-                            <span>Manage Account</span>
+                            <span>Manage Company Profile</span>
                         </a>
-                    </li>
+                    </li> 
                     <li>
-                        <a href="#">
+                        <a href="{{ url('employer/manage-settings') }}">
                             <i class="icon-File"><span class="path1"></span><span
                                     class="path2"></span><span class="path3"></span></i>
-                            <span>Update Password</span>
+                            <span>Update Manager  Account</span>
                         </a>
                     </li>
 
