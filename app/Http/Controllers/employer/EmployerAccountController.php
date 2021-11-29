@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Course;
 use App\Models\Job;
+use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -294,22 +295,60 @@ class EmployerAccountController extends Controller
         Toastr::error('Attachment slot has been closed and wont be visible from the website', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect('employer/manage-closed-attachment-slots');
     }
-    public function viewstudentapplications($id){
+    public function viewstudentapplications($id)
+    {
         $company = Company::where('manager_id', auth()->user()->id)->get()->first();
         $attachment = Application::findOrFail($id);
         $opportunity = Job::findOrFail($attachment->attachment_id);
         $companyid = $company->id;
-        $applications = Application::where(['company_id'=>$company->id, 'attachment_id'=>$id])->get();
+        $applications = Application::where(['company_id' => $company->id, 'attachment_id' => $id])->get();
         return view('companies.view-attachment-applications', compact(['applications', 'opportunity']));
     }
 
-    public function taskviewapplication($id){
+    public function taskviewapplication($id)
+    {
         $company = Company::where('manager_id', auth()->user()->id)->get()->first();
         $attachment = Application::findOrFail($id);
+        $student = StudentProfile::where('student_id', $attachment->student_id)->get()->first();
 
         $job = Job::where('id', $attachment->attachment_id)->get()->first();
 
-        $applications = Application::where(['company_id'=>$company->id, 'attachment_id'=>$id])->get();
-        return view('companies.view-student-attachment-application', compact(['applications','job','company', 'attachment']));
+        $applications = Application::where(['company_id' => $company->id, 'attachment_id' => $id])->get();
+        return view('companies.view-student-attachment-application', compact(['applications', 'job', 'student', 'company', 'attachment']));
+    }
+    public function acceptstudentapplication($id)
+    {
+        $company = Company::where('manager_id', auth()->user()->id)->get()->first();
+        $attachment = Application::findOrFail($id);
+        $opportunity = Job::findOrFail($attachment->attachment_id);
+        $slots = $opportunity->slots_needed;
+        if ($slots == 1) {
+            $attachment->application_status = "Shortlisted";
+            $attachment->save();
+            $opportunity->slots_needed = $slots - 1;
+            $opportunity->application_status = "Closed";
+            $opportunity->save();
+
+            Toastr::success('Student has been shortlisted.', 'Success', ["positionClass" => "toast-top-right"]);
+            return redirect('employer/short-listed-applicants');
+        } else if ($slots > 1) {
+            $attachment->application_status = "Shortlisted";
+            $attachment->save();
+            $opportunity->slots_needed = $slots - 1;
+            $opportunity->save();
+        } else {
+            $closeattachments = Application::where('attachment_id', $opportunity->id)->where('application_status', '!=', 'Shortlisted')->get();
+            foreach ($closeattachments as $closeattachment) {
+                $attachment->application_status = "Closed";
+                $attachment->save();
+            }
+            $opportunity->application_status = "Closed";
+            $opportunity->save();
+
+            Toastr::error('Your Application is already closed.', 'Success', ["positionClass" => "toast-top-right"]);
+            return redirect('employer/manage-closed-attachment-slots');
+        }
+
+       return redirect('employer/manage-closed-attachment-slots');
     }
 }
