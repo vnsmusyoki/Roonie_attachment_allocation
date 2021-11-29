@@ -11,6 +11,7 @@ use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
 
 class StudentAccountController extends Controller
 {
@@ -26,8 +27,8 @@ class StudentAccountController extends Controller
             return redirect('student/edit-profile');
         } else {
             $completeddata = StudentProfile::where('student_id', auth()->user()->id)->get()->first();
-
-            return view('students.dashboard', compact('completeddata'));
+            $applications = Application::where('student_id', auth()->user()->id)->get();
+            return view('students.dashboard', compact(['completeddata', 'applications']));
         }
     }
     public function feestatement()
@@ -138,5 +139,58 @@ class StudentAccountController extends Controller
     public function myprofile()
     {
         return view('students.my-profile');
+    }
+    public function editapplication($id)
+    {
+
+        $application = Application::findOrfail($id);
+        $job = Job::where('id', $application->attachment_id)->get()->first();
+        $company = Company::where('manager_id', $job->company_id)->get()->first();
+
+        return view('students.edit-attachment-application', compact(['job', 'company', 'application']));
+    }
+    public function updateattachmentdetails(Request $request)
+    {
+
+        $this->validate($request, [
+            'description' => 'required',
+            'uploaded_cv' => 'mimes:pdf,PDF,docx,doc|max:10080',
+            'attachment_letter' => ' mimes:pdf,docx, doc, PDF|max:10080',
+            'attachmenttask' => 'required'
+        ]);
+
+        $application = Application::findOrfail($request->input('attachmenttask'));
+        if ($request->hasFile('uploaded_cv')) {
+            Storage::delete('public/studentcvs/' . $application->uploaded_cv);
+            $fileNameWithExt = $request->uploaded_cv->getClientOriginalName();
+            $fileName =  pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $Extension = $request->uploaded_cv->getClientOriginalExtension();
+            $filenameToStore = $fileName . '-' . time() . '.' . $Extension;
+            $path = $request->uploaded_cv->storeAs('studentcvs', $filenameToStore, 'public');
+            $application->uploaded_cv = $filenameToStore;
+        }
+        if ($request->hasFile('attachment_letter')) {
+            Storage::delete('public/attachmentletters/' . $application->uploaded_cv);
+            $fileNameWithExt = $request->attachment_letter->getClientOriginalName();
+            $fileName =  pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $Extension = $request->attachment_letter->getClientOriginalExtension();
+            $filenameToStore = $fileName . '-' . time() . '.' . $Extension;
+            $path = $request->attachment_letter->storeAs('attachmentletters', $filenameToStore, 'public');
+            $application->attachment_letter = $filenameToStore;
+        }
+        $application->student_description = $request->input('description');
+        $application->save();
+
+        Toastr::success('Application details have been updated.', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect()->to('student/my-applications');
+    }
+
+    public function applicationnotifications(){
+        $applications = Application::where('student_id', auth()->user()->id)->get();
+        return view('students.application-notifications', compact('applications'));
+    }
+    public function shortlistedapplicationnotifications(){
+        $applications = Application::where('student_id', auth()->user()->id)->get();
+        return view('students.shortlisted-applications', compact('applications'));
     }
 }

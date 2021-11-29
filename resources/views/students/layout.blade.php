@@ -175,25 +175,32 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('student/my-notifications') }}">
                             <i class="icon-Add-user"><span class="path1"></span><span
                                     class="path2"></span></i>
                             <span>Notifications</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('student/shortlisted-attachments') }}">
                             <i class="icon-Credit-card"><span class="path1"></span><span
                                     class="path2"></span></i>
                             <span>Shortlisted</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                       
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form-logout').submit();">
                             <i class="icon-Credit-card"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            <span>Log Out</span>
+                                class="path2"></span></i>
+                        <span>Log Out</span>
                         </a>
+
+                        <form id="logout-form-logout" action="{{ route('logout') }}" method="POST"
+                            class="d-none">
+                            @csrf
+                        </form>
                     </li>
 
 

@@ -35,7 +35,7 @@
                                             <th>Qualification</th>
                                             <th>Status</th>
                                             <th>Location</th>
-                                            <th>Date Applied</th>
+                                            <th>Opportunity</th>
                                             <th>Cv uploaded</th>
                                             <th>Attachment Letter</th>
                                             <th>Edit</th>
@@ -43,34 +43,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @if ($categories->count() >= 1)
-                                            @foreach ($categories as $category)
+                                        @if ($applications->count() >= 1)
+                                            @foreach ($applications as $key=>$application)
                                                 <tr>
-                                                    <td>{{ $category->id }}</td>
-                                                    <td>{{ $category->name }}</td>
-                                                    <td>{{ $category->created_at->addHours(3)->format('d-m-y h:i:s a') }}
+                                                    <td>{{ ++$key}}</td>
+                                                    <td>{{ $application->applicationcompany->company_name }}</td>
+                                                    <td>{{ $application->created_at->addHours(3)->format('d-m-y h:i:s a') }}
                                                     </td>
-                                                    <td>{{ $category->updated_at->addHours(3)->format('d-m-y h:i:s a') }}
-                                                    </td>
+                                                    <td>{{ $application->application_status }}  </td>
+                                                    <td>{{ $application->applicationcompany->address }}  </td>
+                                                    <td>{{ $application->applicationjob->job_title }}  </td>
+                                                    <td><a href="{{ asset('storage/studentcvs/'.$application->uploaded_cv) }}" class="btn btn-sm btn-info" download="">{{ $application->uploaded_cv }}</a> </td>
+                                                    <td><a href="{{ asset('storage/attachment_letter/'.$application->attachmentletters) }}" class="btn btn-sm btn-primary" download="">{{ $application->attachment_letter }}</a> </td>
 
                                                     <td>
-                                                        <a href="{{ route('category.edit', $category->id) }}"
-                                                            class="btn btn-success">Edit</a>
+                                                        <a href="{{ url('student/edit-application/'.$application->id) }}"
+                                                            class="btn btn-success btn-sm">Edit</a>
                                                     </td>
                                                     <td>
 
-                                                        <form action="{{ route('category.destroy', $category->id) }}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn btn-danger" type="submit">Delete</button>
-                                                        </form>
+                                                        <a href=""
+                                                        class="btn btn-danger btn-sm">Cancel</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        @endif --}}
+                                        @endif
                                     </tbody>
-                                     
+
                                 </table>
                             </div>
                         </div>
@@ -79,65 +78,7 @@
                     <!-- /.box -->
                 </div>
             </div>
-            <!-- /.box -->
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h3>Student Profile</h3>
-                </div>
 
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12"></div>
-                        <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-                            <table class="table table-bordered table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Item</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Full Names</td>
-                                        <td>{{ Auth::user()->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Email Address</td>
-                                        <td>{{ Auth::user()->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Course</td>
-                                        <td>{{ $completeddata->course }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>School</td>
-                                        <td>{{ $completeddata->school }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Year of Study</td>
-                                        <td>{{ $completeddata->year_of_study }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Date created account</td>
-                                        <td>{{ $completeddata->created_at->addHours(3)->format('l. d-m-y, h:i:s a') }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12"></div>
-                    </div>
-
-
-                </div>
-            </div>
         </section>
         <!-- /.content -->
     </div>

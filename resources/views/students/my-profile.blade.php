@@ -14,14 +14,11 @@
 
         <!-- Main content -->
         <section class="content">
-
-
             <!-- /.box -->
             <div class="card">
                 <div class="card-header bg-primary">
                     <h3>My Profile</h3>
                 </div>
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12"></div>
