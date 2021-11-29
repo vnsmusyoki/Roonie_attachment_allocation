@@ -294,4 +294,22 @@ class EmployerAccountController extends Controller
         Toastr::error('Attachment slot has been closed and wont be visible from the website', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect('employer/manage-closed-attachment-slots');
     }
+    public function viewstudentapplications($id){
+        $company = Company::where('manager_id', auth()->user()->id)->get()->first();
+        $attachment = Application::findOrFail($id);
+        $opportunity = Job::findOrFail($attachment->attachment_id);
+        $companyid = $company->id;
+        $applications = Application::where(['company_id'=>$company->id, 'attachment_id'=>$id])->get();
+        return view('companies.view-attachment-applications', compact(['applications', 'opportunity']));
+    }
+
+    public function taskviewapplication($id){
+        $company = Company::where('manager_id', auth()->user()->id)->get()->first();
+        $attachment = Application::findOrFail($id);
+
+        $job = Job::where('id', $attachment->attachment_id)->get()->first();
+
+        $applications = Application::where(['company_id'=>$company->id, 'attachment_id'=>$id])->get();
+        return view('companies.view-student-attachment-application', compact(['applications','job','company', 'attachment']));
+    }
 }

@@ -55,6 +55,8 @@ Route::prefix('employer')->group(function(){
     Route::get('close-attachment-applications/{id}', [EmployerAccountController::class, 'updateopportunityslotstatus']);
     Route::get('manage-closed-attachment-slots', [EmployerAccountController::class, 'closedattachmentslots']);
     Route::get('delete-attachment-applications/{id}', [EmployerAccountController::class, 'deleteattachmentslots']);
+    Route::get('view-attachment-applications/{id}', [EmployerAccountController::class, 'viewstudentapplications']);
+    Route::get('task-view-application/{id}', [EmployerAccountController::class, 'taskviewapplication']);
 
 
 
