@@ -105,9 +105,10 @@ Route::prefix('student')->group(function () {
     Route::get('feestatement', [StudentAccountController::class, 'feestatement']);
     Route::get('account-password', [StudentAccountController::class, 'accountpassword']);
     Route::get('edit-profile', [StudentAccountController::class, 'editprofile']);
-    Route::post('edit_profile', [StudentAccountController::class, 'updateprofile']); 
+    Route::post('edit_profile', [StudentAccountController::class, 'updateprofile']);
     Route::get('all-available-attachments', [StudentAccountController::class, 'allattachments']);
     Route::get('all-attachments/apply/{id}', [StudentAccountController::class, 'applyattachment']);
+    Route::get('apply_attachment', [StudentAccountController::class, 'uploadattachmentdetails']);
 });
 
 

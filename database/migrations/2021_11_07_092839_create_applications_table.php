@@ -17,11 +17,16 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('job_id')->references('id')->on('jobs');
-            $table->string('resume');
+            $table->bigInteger('student_id')->nullable()->unsigned();
+            $table->bigInteger('company_id')->nullable()->unsigned();
+            $table->bigInteger('attachment_id')->nullable()->unsigned();
+            $table->string('uploaded_cv');
             $table->string('attachment_letter');
-            $table->enum('status',['pending','approved', 'rejected'])->default('pending');
+            $table->string('application_status');
+            $table->longText('student_description');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('attachment_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

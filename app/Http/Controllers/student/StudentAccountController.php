@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Course;
 use App\Models\Job;
 use App\Models\StudentProfile;
@@ -83,7 +84,14 @@ class StudentAccountController extends Controller
         return view('students.all-attachments', compact('categories'));
     }
     public function applyattachment($id){
+
         $job = Job::findOrfail($id);
-        return view('students.apply-attachment-link', compact('job'));
+
+        $company = Company::where('manager_id', $job->company_id)->get()->first();
+
+        return view('students.apply-attachment-link', compact(['job', 'company']));
+    }
+    public function uploadattachmentdetails(Request $request){
+        
     }
 }

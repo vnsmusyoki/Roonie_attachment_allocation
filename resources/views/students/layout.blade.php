@@ -152,13 +152,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('student/all-attachments') }}">
-                            <i class="icon-Briefcase"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            <span>Attachment Categories</span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="{{ url('student/all-available-attachments') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
