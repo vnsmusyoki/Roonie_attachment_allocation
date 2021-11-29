@@ -1,10 +1,9 @@
 @extends('admin.layout')
 
-@section('content') 
+@section('content')
 	<div class="container-full">
-
-
 		<!-- Main content -->
+    <h5>ceatjtjtjtjt</h5>
 		<section class="content">
 
 			<div class="row">

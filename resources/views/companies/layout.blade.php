@@ -59,7 +59,7 @@
                         <li class="btn-group nav-item d-lg-flex d-none align-items-center">
                             <p class="mb-0 text-fade pr-10 pt-5">
                                 {{ Carbon\Carbon::now()->addHours(3)->format('l, d-m-y
-                                                                                                                                                                                                                                h:i:s a') }}
+                                                                                                                                                                                                                                                                                                h:i:s a') }}
                             </p>
                         </li>
                         <li class="btn-group nav-item d-lg-inline-flex d-none">
@@ -126,7 +126,8 @@
                             <a class="dropdown-toggle px-20" data-toggle="dropdown"
                                 href="#">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('employer/edit-profile') }}"><i class="ti-user"></i> Profile</a>
+                                <a class="dropdown-item" href="{{ url('employer/edit-profile') }}"><i
+                                        class="ti-user"></i> Profile</a>
 
                             </div>
                         </div>
@@ -187,11 +188,19 @@
                     </li>
 
                     <li>
-                        <a href="#">
+
+
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
                             <i class="icon-User"><span class="path1"></span><span
                                     class="path2"></span></i>
-                            <span>Notifications</span>
+                            <span>Log Out</span>
                         </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                     </li>
 
                 </ul>

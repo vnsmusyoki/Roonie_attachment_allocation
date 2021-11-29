@@ -147,7 +147,7 @@
                         <a href="{{ route('category.index') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>
-                            <span>Jobs Categories</span>
+                            <span>Attachment Categories</span>
                         </a>
                     </li>
                     <li>
@@ -157,6 +157,7 @@
                             <span>Create New Categories</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="{{ url('admin/all-courses') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
@@ -171,6 +172,7 @@
                             <span>Applications</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="#">
                             <i class="icon-Add-user"><span class="path1"></span><span
@@ -200,7 +202,21 @@
                             <span>Profile</span>
                         </a>
                     </li>
+                    <li>
 
+
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                            <i class="icon-User"><span class="path1"></span><span
+                                    class="path2"></span></i>
+                            <span>Log Out</span>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+                    </li>
                 </ul>
             </section>
         </aside>

@@ -31,9 +31,8 @@ class EmployerAccountController extends Controller
     {
         $checkcompany = Company::where('manager_id', auth()->user()->id)->count();
         if ($checkcompany  == 0) {
-            $categories = Category::all();
-            $courses = Course::all();
-            return redirect('employer/edit-profile', compact(['categories', 'courses']));
+
+            return redirect()->to('employer/edit-profile');
         } else {
 
             return view('companies.dashboard');
@@ -46,7 +45,9 @@ class EmployerAccountController extends Controller
             Toastr::error('You have already created Your details.Consider Updating the record', 'Success', ["positionClass" => "toast-top-right"]);
             return redirect()->back();
         } else {
-            return view('companies.edit-profile');
+            $categories = Category::all();
+            $courses = Course::all();
+            return view('companies.edit-profile', compact(['courses', 'categories']));
         }
     }
     public function viewCompanyProfile()
