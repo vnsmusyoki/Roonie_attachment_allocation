@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Application;
 use App\Models\Company;
 use App\Models\Course;
 use App\Models\Job;
@@ -83,7 +84,8 @@ class StudentAccountController extends Controller
         $categories = Job::where('attachment_status', "Active")->get();
         return view('students.all-attachments', compact('categories'));
     }
-    public function applyattachment($id){
+    public function applyattachment($id)
+    {
 
         $job = Job::findOrfail($id);
 
@@ -91,7 +93,50 @@ class StudentAccountController extends Controller
 
         return view('students.apply-attachment-link', compact(['job', 'company']));
     }
-    public function uploadattachmentdetails(Request $request){
-        
+    public function uploadattachmentdetails(Request $request)
+    {
+
+        $this->validate($request, [
+            'description' => 'required',
+            'uploaded_cv' => 'required| mimes:pdf,PDF,docx,doc|max:10080',
+            'attachment_letter' => 'required| mimes:pdf,docx, doc, PDF|max:10080',
+            'attachmenttask' => 'required'
+        ]);
+
+        $job = Job::findOrfail($request->input('attachmenttask'));
+
+        $company = Company::where('manager_id', $job->company_id)->get()->first();
+        $application = new Application;
+        $fileNameWithExt = $request->uploaded_cv->getClientOriginalName();
+        $fileName =  pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        $Extension = $request->uploaded_cv->getClientOriginalExtension();
+        $filenameToStore = $fileName . '-' . time() . '.' . $Extension;
+        $path = $request->uploaded_cv->storeAs('studentcvs', $filenameToStore, 'public');
+        $application->uploaded_cv = $filenameToStore;
+        $fileNameWithExt = $request->attachment_letter->getClientOriginalName();
+        $fileName =  pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        $Extension = $request->attachment_letter->getClientOriginalExtension();
+        $filenameToStore = $fileName . '-' . time() . '.' . $Extension;
+        $path = $request->attachment_letter->storeAs('attachmentletters', $filenameToStore, 'public');
+        $application->attachment_letter = $filenameToStore;
+        $application->student_id = auth()->user()->id;
+        $application->student_description = $request->input('description');
+        $application->application_status = "Waiting";
+        $application->company_id = $company->id;
+        $application->attachment_id = $request->input('attachmenttask');
+        $application->save();
+
+        Toastr::success('Profile has been updated.', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect()->to('student/my-applications');
+    }
+
+    public function allapplications()
+    {
+        $applications = Application::where('student_id', auth()->user()->id)->get();
+        return view('students.all-applications', compact('applications'));
+    }
+    public function myprofile()
+    {
+        return view('students.my-profile');
     }
 }

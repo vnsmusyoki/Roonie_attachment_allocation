@@ -1,5 +1,5 @@
 @extends('students.layout')
-
+@section('title', 'APply for this opportunity')
 @section('content')
     <div class="container-full">
         <!-- Content Header (Page header) -->
@@ -14,7 +14,6 @@
 
         <!-- Main content -->
         <section class="content">
-
             <div class="row">
                 <div class="col-lg-6">
                     <img src="{{ asset('storage/companylogos/' . $company->logo) }}" class="img-fluid" alt="">
@@ -68,11 +67,9 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form action="{{ url('student/apply_attachment') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('student/apply-attachment') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-
-
                                     <div class="col-12">
                                         <div class="form-group">
                                             <h5>Attachment Letter<span class="text-danger">*</span></h5>
@@ -89,10 +86,10 @@
                                         <div class="form-group">
                                             <h5>Upload Your CV<span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="file" name="picture"
-                                                    class="form-control @error('picture') is-invalid @enderror">
+                                                <input type="file" name="uploaded_cv"
+                                                    class="form-control @error('uploaded_cv') is-invalid @enderror">
                                             </div>
-                                            @error('picture')
+                                            @error('uploaded_cv')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -102,7 +99,10 @@
                                             <h5>Description</h5><span class="text-danger">*</span></h5>
                                             <div class="controls">
 
-                                                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="" cols="30" rows="10" placeholder="Justify to us why you really need this attachment opportunity"></textarea>
+                                                <textarea name="description"
+                                                    class="form-control @error('description') is-invalid @enderror" id=""
+                                                    cols="30" rows="10"
+                                                    placeholder="Justify to us why you really need this attachment opportunity"></textarea>
                                             </div>
                                             @error('description')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -113,7 +113,8 @@
                                 </div>
 
                                 <div class="text-xs-right">
-                                    <button type="submit" class="btn btn-rounded btn-info">Submit Attachment Application</button>
+                                    <button type="submit" class="btn btn-rounded btn-info">Submit Attachment
+                                        Application</button>
                                 </div>
                             </form>
 

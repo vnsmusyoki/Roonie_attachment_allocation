@@ -152,7 +152,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="{{ url('student/all-available-attachments') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
@@ -161,14 +161,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('student/my-applications') }}">
                             <i class="icon-Briefcase"><span class="path1"></span><span
                                     class="path2"></span></i>
                             <span>My Applications</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('student/my-profile') }}">
                             <i class="icon-File"><span class="path1"></span><span
                                     class="path2"></span><span class="path3"></span></i>
                             <span>My Account </span>

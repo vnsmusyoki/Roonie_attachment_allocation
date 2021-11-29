@@ -108,8 +108,11 @@ Route::prefix('student')->group(function () {
     Route::post('edit_profile', [StudentAccountController::class, 'updateprofile']);
     Route::get('all-available-attachments', [StudentAccountController::class, 'allattachments']);
     Route::get('all-attachments/apply/{id}', [StudentAccountController::class, 'applyattachment']);
-    Route::get('apply_attachment', [StudentAccountController::class, 'uploadattachmentdetails']);
+    Route::get('my-applications', [StudentAccountController::class, 'allapplications']);
+    Route::get('my-profile', [StudentAccountController::class, 'myprofile']);
 });
+Route::post('student/apply-attachment', [StudentAccountController::class,'uploadattachmentdetails']);
+
 
 
 Route::prefix('admin')->group(function () {
