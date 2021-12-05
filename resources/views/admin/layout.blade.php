@@ -165,43 +165,10 @@
                             <span>Courses</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-File"><span class="path1"></span><span
-                                    class="path2"></span><span class="path3"></span></i>
-                            <span>Applications</span>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a href="#">
-                            <i class="icon-Add-user"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            <span>Candidates</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-Credit-card"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            <span>Shortlisted</span>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a href="">
-                            <i class="icon-Layout-grid"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            <span>Employers</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-User"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
+
+                     
                     <li>
 
 
