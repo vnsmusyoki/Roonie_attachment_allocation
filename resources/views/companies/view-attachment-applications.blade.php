@@ -37,7 +37,7 @@
                                         <span class="badge badge-primary">Date applied - {{ $application->created_at->format('l, d-m-y') }}</span>
                                         <span class="badge badge-danger">Application Status - {{ $application->application_status }}</span>
                                         <a href="{{ asset('storage/studentcvs/'.$application->uploaded_cv) }}" class="badge badge-warning" download="{{$application->applicationstudent->name }} ">Attachment Letter - {{ $application->applicationcompany->company_name }}</a>
-                                        <a href="{{ url('employer/view-student-application/'.$application->id) }}" class="badge badge-info">Download CV - {{ $application->applicationcompany->address }}</a>
+                                        <a href="{{ url('employer/task-view-application/'.$application->id) }}" class="badge badge-info">Allocate Opportunity - {{ $application->applicationcompany->address }}</a>
                                     </p>
 
                                 </div>

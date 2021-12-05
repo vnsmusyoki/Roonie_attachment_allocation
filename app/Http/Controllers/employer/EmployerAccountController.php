@@ -37,7 +37,6 @@ class EmployerAccountController extends Controller
         } else {
             $attachments = Job::where(['company_id' => auth()->user()->id, 'attachment_status' => "Active"])->get();
             return view('companies.dashboard', compact('attachments'));
-         
         }
     }
     public function editprofile()
@@ -298,12 +297,26 @@ class EmployerAccountController extends Controller
     }
     public function viewstudentapplications($id)
     {
+
         $company = Company::where('manager_id', auth()->user()->id)->get()->first();
-        $attachment = Application::findOrFail($id);
-        $opportunity = Job::findOrFail($attachment->attachment_id);
-        $companyid = $company->id;
-        $applications = Application::where(['company_id' => $company->id, 'attachment_id' => $id])->get();
-        return view('companies.view-attachment-applications', compact(['applications', 'opportunity']));
+        $job = Job::findOrFail($id);
+
+        $checkapps = Application::where('attachment_id', $job->id)->get();
+        if ($checkapps->count() == 0) {
+            Toastr::error('No applications yet.', 'Success', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        } else {
+            $opportunity = Job::findOrFail($id);
+            $companyid = $company->id;
+            $applications = Application::where(['company_id' => $company->id, 'attachment_id'=>$id, 'application_status'=>'Waiting'])->get();
+            if($applications->count() == 0){
+                Toastr::error('No new unvalidated applications yet.', 'Success', ["positionClass" => "toast-top-right"]);
+                return redirect()->back();
+            }else{
+                return view('companies.view-attachment-applications', compact(['applications', 'opportunity']));
+            }
+
+        }
     }
 
     public function taskviewapplication($id)
@@ -340,8 +353,8 @@ class EmployerAccountController extends Controller
         } else {
             $closeattachments = Application::where('attachment_id', $opportunity->id)->where('application_status', '!=', 'Shortlisted')->get();
             foreach ($closeattachments as $closeattachment) {
-                $attachment->application_status = "Closed";
-                $attachment->save();
+                $closeattachment->application_status = "Closed";
+                $closeattachment->save();
             }
             $opportunity->application_status = "Closed";
             $opportunity->save();

@@ -27,6 +27,7 @@
                                             <th>Token</th>
                                             <th>Courses</th>
                                             <th>Timeline</th>
+                                            <th>Date Uploaded</th>
                                             <th>Action</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -34,8 +35,9 @@
                                     </thead>
                                     <tbody>
                                         @if ($attachments->count() >= 1)
-                                            @foreach ($attachments as $attachment)
+                                            @foreach ($attachments as $key=>$attachment)
                                                 <tr>
+                                                    <td>{{ ++$key }}</td>
                                                     <td>{{ $attachment->job_title }}</td>
                                                     <td>Kshs. {{ $attachment->appreciation_token }}</td>
                                                     <td> {{ $attachment->course }}</td>
