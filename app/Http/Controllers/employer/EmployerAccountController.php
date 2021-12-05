@@ -35,8 +35,9 @@ class EmployerAccountController extends Controller
 
             return redirect()->to('employer/edit-profile');
         } else {
-
-            return view('companies.dashboard');
+            $attachments = Job::where(['company_id' => auth()->user()->id, 'attachment_status' => "Active"])->get();
+            return view('companies.dashboard', compact('attachments'));
+         
         }
     }
     public function editprofile()

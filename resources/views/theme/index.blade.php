@@ -9,7 +9,7 @@
                 <div class="content-column col-lg-7 col-md-12 col-sm-12">
                     <div class="inner-column wow fadeInUp" data-wow-delay="1000ms">
                         <div class="title-box">
-                            <h3>There Are <span class="colored">01</span> Postings Here<br> For you!</h3>
+                            <h3>There Are <span class="colored">{{ $posts }}</span> Postings Here<br> For you!</h3>
                             <div class="text">Find Attachment opportunities here</div>
                         </div>
 
@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-5 col-md-12 col-sm-12">
                                         <span class="icon flaticon-search-1"></span>
-                                        
+
                                         <select name="" id="" >
                                             <option value="">select</option>
                                             <option value="">Course 1</option>
@@ -56,8 +56,6 @@
                 <div class="image-column col-lg-5 col-md-12">
                     <div class="image-box">
                         <figure class="main-image wow fadeIn" data-wow-delay="500ms"><img src="{{asset('frontend/images/resource/banner-img-1.png')}}" alt=""></figure>
-
-
                     </div>
                 </div>
             </div>
@@ -106,18 +104,19 @@
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
                             <div class="content">
-                                <span class="company-logo"><img src="{{asset('storage/'.$job->image)}}" alt="" width="54" height="53"></span>
+                                <span class="company-logo"><img src="{{asset('storage/companylogos/'.$job->image)}}" alt="" width="54" height="53"></span>
                                 <h4><a href="{{route('job-single-page',$job->id)}}">{{$job->job_title}}</a></h4>
                                 <ul class="job-info">
                                     <li><span class="icon flaticon-briefcase"></span> Category:{{$job->job_category}}</li>
-                                    {{-- <li><span class="icon flaticon-map-locator"></span>Job Category: {{$job->job_title}}</li> --}}
-                                    <li><span class="icon flaticon-clock-3"></span>Location:  {{$job->address}}</li>
-                                    <li><span class="icon flaticon-money"></span> Salary: {{$job->salary}}</li>
+                                    <li><span class="icon flaticon-map-locator"></span>Job Category: {{$job->course}} </li>
+                                    <li><span class="icon flaticon-map-locator"></span>Slots Available: {{ $job->slots_needed }}</li>
+
+                                    <li><span class="icon flaticon-money"></span> Salary: Kshs. {{$job->appreciation_token}}</li>
                                 </ul>
                                 <ul class="job-other-info">
-                                    <li class="time">3-4 Months</li>
-                                    <li class="privacy">Urgent</li>
-                                    <li class="required">{{$job->status}}</li>
+                                    <li class="time">{{ $job->attachment_start }} - {{ $job->attachment_end }}</li>
+
+                                    <li class="required">{{$job->attachment_status}}</li>
                                 </ul>
                                 <button class="bookmark-btn"><span class="flaticon-bookmark"></span></button>
                             </div>

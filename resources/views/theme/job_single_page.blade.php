@@ -2,7 +2,7 @@
 
 @section('main')
 
-<!-- Job Detail Section -->
+    <!-- Job Detail Section -->
     <section class="job-detail-section" style="margin-top: 30px;">
         <!-- Upper Box -->
         <div class="upper-box">
@@ -11,22 +11,23 @@
                 <div class="job-block-seven">
                     <div class="inner-box">
                         <div class="content">
-                            <span class="company-logo"><img src="{{asset('storage/'.$job->image)}}" alt=""></span>
-                            <h4><a href="#">{{$job->job_title}}</a></h4>
+                            <span class="company-logo"><img src="{{ asset('storage/' . $job->image) }}" alt=""></span>
+                            <h4><a href="#">{{ $job->job_title }}</a></h4>
                             <ul class="job-info">
-                                <li><span class="icon flaticon-briefcase"></span> Job Category:{{$job->job_category}}</li>
-                                <li><span class="icon flaticon-map-locator"></span> Location:  {{$job->address}}</li>
-                                <li><span class="icon flaticon-money"></span> Salary: {{$job->salary}}</li>
+                                <li><span class="icon flaticon-briefcase"></span> Job Category:{{ $job->job_category }}</li>
+                                <li><span class="icon flaticon-map-locator"></span> Location: {{ $job->address }}</li>
+                                <li><span class="icon flaticon-money"></span> Salary: {{ $job->salary }}</li>
                             </ul>
                             <ul class="job-other-info">
-                                <li class="time">3-4 Months</li>
-                                <li class="privacy">Urgent</li>
-                                <li class="required">{{$job->status}}</li>
+                                <li class="time">{{ $job->attachment_start }} -
+                                    {{ $job->attachment_end }}</li>
+
+                                <li class="required">{{ $job->attachment_status }}</li>
                             </ul>
                         </div>
 
                         <div class="btn-box">
-                            <a href="{{route('application-form')}}" class="theme-btn btn-style-one">Apply For Job</a>
+                            <a href="{{ route('login') }}" class="theme-btn btn-style-one">Apply For Job</a>
                             <button class="bookmark-btn"><i class="flaticon-bookmark"></i></button>
                         </div>
                     </div>
@@ -40,9 +41,11 @@
                     <div class="content-column col-lg-8 col-md-12 col-sm-12">
                         <div class="job-detail">
                             <h4>Job Description</h4>
-                            <p>{{$job->job_description}}</p>
+                            <p>{{ $job->job_description }}</p>
                             <h4>Skill & Experience</h4>
-                            <p>{{$job->qualification}}</p>
+                            <p>{{ $job->qualification }}</p>
+                            <h4>Additional Information</h4>
+                            <p>{{ $job->additional_information }}</p>
                         </div>
 
 
@@ -58,28 +61,33 @@
                                         <li>
                                             <i class="icon icon-calendar"></i>
                                             <h5>Date Posted: </h5>
-                                            <span>{{$job->created_at}}</span>
+                                            <span>{{ $job->created_at->format('l, d-m-y') }}</span>
                                         </li>
                                         <li>
                                             <i class="icon icon-expiry"></i>
-                                            <h5>Expiration date:</h5>
-                                            <span>{{$job->date}}</span>
+                                            <h5>Gender:</h5>
+                                            <span>{{ $job->gender }}</span>
                                         </li>
                                         <li>
                                             <i class="icon icon-location"></i>
-                                            <h5>Location:</h5>
-                                            <span>{{$job->address}}</span>
+                                            <h5>Courses:</h5>
+                                            <span>{{ $job->course }}</span>
+                                        </li>
+                                        <li>
+                                            <i class="icon icon-location"></i>
+                                            <h5>Category:</h5>
+                                            <span>{{ $job->job_category }}</span>
                                         </li>
                                         <li>
                                             <i class="icon icon-user-2"></i>
                                             <h5>Job Title:</h5>
-                                            <span>{{$job->job_title}}</span>
+                                            <span>{{ $job->job_title }}</span>
                                         </li>
-                                      
+
                                         <li>
                                             <i class="icon icon-salary"></i>
                                             <h5>Token:</h5>
-                                            <span>{{$job->salary}}</span>
+                                            <span>{{ $job->appreciation_token }}</span>
                                         </li>
                                     </ul>
                                 </div>

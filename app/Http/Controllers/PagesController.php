@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -13,22 +14,23 @@ class PagesController extends Controller
 {
     public function index(){
         $jobs = Job::all()->take(6);
-        // $posts = Job::where('status','active')->count();
+        $posts = Job::where('attachment_status','active')->count();
         $categories=Category::all()->take(9);
-        return view('theme.index', compact('jobs','categories'));
+        return view('theme.index', compact(['jobs','categories', 'posts']));
     }
     public function jobList()
     {
-        $jobs = Job::where('status','active')->paginate(36);
+        $jobs = Job::where('attachment_status','active')->paginate(36);
         return view('theme.job_list',compact('jobs'));
     }
     public function jobSinglePage($id)
     {
 
         $job = Job::find($id);
+        $company = Company::where('manager_id', $job->company_id)->get()->first();
         // Session::put('job_id', $job);
         session()->put('job_id', $id);
-        return view('theme.job_single_page',compact('job'));
+        return view('theme.job_single_page',compact('job', 'company'));
     }
 
     public function employers(){
@@ -58,7 +60,7 @@ class PagesController extends Controller
     public function JobsApplied(){
         $applied = Application::with(['jobs'])->get();
         $s = new Collection();
-        
+
         // $applied->each(function($d){
         //     dump($d->jobs);
         // });
