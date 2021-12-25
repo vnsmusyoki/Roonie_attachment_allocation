@@ -1,7 +1,7 @@
 
 ## About Roodito
 
-It is a school management weiste for teachers, students, parents and tutors
+It is aBUSRSARY ALLOCATUON for teachers, students, parents and tutors
 
 ## About Languages
 -HTML
