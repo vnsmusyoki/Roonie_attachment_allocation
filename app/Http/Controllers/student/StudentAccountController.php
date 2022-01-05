@@ -145,8 +145,14 @@ class StudentAccountController extends Controller
     }
     public function applicationdetails($id)
     {
-        $applications = Application::where('student_id', auth()->user()->id)->get();
-        return view('students.all-applications', compact('applications'));
+
+        $attachment = Application::findOrFail($id);
+        $company = Company::where('manager_id', $attachment->company_id)->get()->first();
+        $student = StudentProfile::where('student_id', $attachment->student_id)->get()->first();
+
+        $job = Job::where('id', $attachment->attachment_id)->get()->first();
+
+        return view('students.view-student-attachment-application', compact(['job', 'student', 'company', 'attachment']));
     }
     public function myprofile()
     {

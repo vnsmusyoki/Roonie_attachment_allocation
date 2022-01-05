@@ -66,29 +66,13 @@
                     <a href="{{ asset('storage/attachment_letter/' . $attachment->attachmentletters) }}"
                         class="btn btn-sm btn-block btn-primary" download="">{{ $attachment->attachment_letter }}</a>
                     <hr>
-                    <a href="{{ url('employer/accept-student-application/' . $attachment->id) }}"
-                        class="btn btn-rounded btn-danger">Accept Attachment
-                        Application</a>
+
                 </div>
             </div>
             <br>
             <hr>
             <!-- Basic Forms -->
-            <div class="box jumbotron">
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col">
-
-
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+            
         </section>
         <!-- /.content -->
     </div>
