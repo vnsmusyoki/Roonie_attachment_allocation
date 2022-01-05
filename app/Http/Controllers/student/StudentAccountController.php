@@ -143,6 +143,11 @@ class StudentAccountController extends Controller
         $applications = Application::where('student_id', auth()->user()->id)->get();
         return view('students.all-applications', compact('applications'));
     }
+    public function shortlistedapplications()
+    {
+        $applications = Application::where(['student_id' => auth()->user()->id, 'application_status' => 'AcceptShortlist'])->get();
+        return view('students.shortlisted-apps', compact('applications'));
+    }
     public function applicationdetails($id)
     {
 

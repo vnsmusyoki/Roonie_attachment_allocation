@@ -62,6 +62,7 @@ Route::prefix('employer')->group(function(){
     Route::get('view-shortlisted-application/{id}', [EmployerAccountController::class, 'viewshortlistedapplication']);
     Route::get('manage-company-profile', [EmployerAccountController::class, 'managecompanyprofile']);
     Route::get('manage-settings', [EmployerAccountController::class, 'managesettings']);
+    Route::get('close-all-applications/{id}', [EmployerAccountController::class, 'closeapplications']);
 
 
 
@@ -116,6 +117,7 @@ Route::prefix('student')->group(function () {
     Route::get('all-available-attachments', [StudentAccountController::class, 'allattachments']);
     Route::get('all-attachments/apply/{id}', [StudentAccountController::class, 'applyattachment']);
     Route::get('my-applications', [StudentAccountController::class, 'allapplications']);
+    Route::get('shortlisted-applications', [StudentAccountController::class, 'shortlistedapplications']);
     Route::get('my-applications/{id}', [StudentAccountController::class, 'applicationdetails']);
     Route::get('my-profile', [StudentAccountController::class, 'myprofile']);
     Route::get('edit-application/{id}', [StudentAccountController::class, 'editapplication']);

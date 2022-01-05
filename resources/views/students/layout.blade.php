@@ -168,6 +168,13 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ url('student/shortlisted-applications') }}">
+                            <i class="icon-Briefcase"><span class="path1"></span><span
+                                    class="path2"></span></i>
+                            <span>Shortlisted Applications</span></span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ url('student/my-profile') }}">
                             <i class="icon-File"><span class="path1"></span><span
                                     class="path2"></span><span class="path3"></span></i>
@@ -189,7 +196,7 @@
                         </a>
                     </li>
                     <li>
-                       
+
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form-logout').submit();">
                             <i class="icon-Credit-card"><span class="path1"></span><span
