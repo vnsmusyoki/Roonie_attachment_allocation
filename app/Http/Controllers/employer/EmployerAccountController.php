@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\employer;
 
 use App\Http\Controllers\Controller;
+use App\Mail\StudentNotifyApplication;
 use App\Models\Application;
 use App\Models\Category;
 use App\Models\Company;
@@ -16,6 +17,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -308,14 +310,13 @@ class EmployerAccountController extends Controller
         } else {
             $opportunity = Job::findOrFail($id);
             $companyid = $company->id;
-            $applications = Application::where(['company_id' => $company->id, 'attachment_id'=>$id, 'application_status'=>'Waiting'])->get();
-            if($applications->count() == 0){
+            $applications = Application::where(['company_id' => $company->id, 'attachment_id' => $id, 'application_status' => 'Waiting'])->get();
+            if ($applications->count() == 0) {
                 Toastr::error('No new unvalidated applications yet.', 'Success', ["positionClass" => "toast-top-right"]);
                 return redirect()->back();
-            }else{
+            } else {
                 return view('companies.view-attachment-applications', compact(['applications', 'opportunity']));
             }
-
         }
     }
 
@@ -335,33 +336,37 @@ class EmployerAccountController extends Controller
         $company = Company::where('manager_id', auth()->user()->id)->get()->first();
         $attachment = Application::findOrFail($id);
         $opportunity = Job::findOrFail($attachment->attachment_id);
-        $slots = $opportunity->slots_needed;
-        if ($slots == 1) {
-            $attachment->application_status = "Shortlisted";
-            $attachment->save();
-            $opportunity->slots_needed = $slots - 1;
-            $opportunity->application_status = "Closed";
-            $opportunity->save();
+        $attachment->application_status = "Shortlisted";
+        $attachment->save();
+        $message = "Congratulations, " . $attachment->applicationstudent->name . ". On successfully securing a chance for attachment at " . $company->company_name . ". You will respond to our email if you are still interested.";
+        $receiver = $attachment->applicationstudent->email;
+        $topic = "Your Application has been accepted";
+        Mail::to($receiver)->send(new StudentNotifyApplication($receiver, $topic, $message));
+        // $slots = $opportunity->slots_needed;
+        // if ($slots == 1) {
+        //     $attachment->application_status = "Shortlisted";
+        //     $attachment->save();
+        //     $opportunity->slots_needed = $slots - 1;
+        //     $opportunity->application_status = "Closed";
+        //     $opportunity->save();
 
-            Toastr::success('Student has been shortlisted.', 'Success', ["positionClass" => "toast-top-right"]);
-            return redirect('employer/short-listed-applicants');
-        } else if ($slots > 1) {
-            $attachment->application_status = "Shortlisted";
-            $attachment->save();
-            $opportunity->slots_needed = $slots - 1;
-            $opportunity->save();
-        } else {
-            $closeattachments = Application::where('attachment_id', $opportunity->id)->where('application_status', '!=', 'Shortlisted')->get();
-            foreach ($closeattachments as $closeattachment) {
-                $closeattachment->application_status = "Closed";
-                $closeattachment->save();
-            }
-            $opportunity->application_status = "Closed";
-            $opportunity->save();
+        //     Toastr::success('Student has been shortlisted.', 'Success', ["positionClass" => "toast-top-right"]);
+        //     return redirect('employer/short-listed-applicants');
+        // } else if ($slots > 1) {
 
-            Toastr::error('Your Application is already closed.', 'Success', ["positionClass" => "toast-top-right"]);
-            return redirect('employer/manage-closed-attachment-slots');
-        }
+        // } else {
+        //     $closeattachments = Application::where('attachment_id', $opportunity->id)->where('application_status', '!=', 'Shortlisted')->get();
+        //     foreach ($closeattachments as $closeattachment) {
+        //         $closeattachment->application_status = "Closed";
+        //         $closeattachment->save();
+        //     }
+        //     $opportunity->application_status = "Closed";
+        //     $opportunity->save();
+
+        //     Toastr::error('Your Application is already closed.', 'Success', ["positionClass" => "toast-top-right"]);
+        //     return redirect('employer/manage-closed-attachment-slots');
+        // }
+        Toastr::success('Student has been shortlisted and email sent waiting for response.', 'Success', ["positionClass" => "toast-top-right"]);
 
         return redirect('employer/manage-closed-attachment-slots');
     }

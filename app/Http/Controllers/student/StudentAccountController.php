@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
+use App\Mail\StudentNotifyApplication;
+use App\Mail\StudentResponse;
 use App\Models\Application;
 use App\Models\Company;
 use App\Models\Course;
@@ -11,6 +13,7 @@ use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class StudentAccountController extends Controller
@@ -91,8 +94,8 @@ class StudentAccountController extends Controller
         $job = Job::findOrfail($id);
 
         $company = Company::where('manager_id', $job->company_id)->get()->first();
-
-        return view('students.apply-attachment-link', compact(['job', 'company']));
+        $applications = Application::where(['attachment_id' => $id, 'student_id' => auth()->user()->id])->get();
+        return view('students.apply-attachment-link', compact(['job', 'company', 'applications']));
     }
     public function uploadattachmentdetails(Request $request)
     {
@@ -126,12 +129,21 @@ class StudentAccountController extends Controller
         $application->company_id = $company->id;
         $application->attachment_id = $request->input('attachmenttask');
         $application->save();
+        $message = "Your application has been received. This slot is currently on offer and we will continue accepting more applications. You will be notified if you are selected for the slot.";
+        $receiver = auth()->user()->email;
+        $topic = "Application Status";
 
-        Toastr::success('Profile has been updated.', 'Success', ["positionClass" => "toast-top-right"]);
+        Mail::to($receiver)->send(new StudentNotifyApplication($receiver, $topic, $message));
+        Toastr::success('Your Application has been received.', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect()->to('student/my-applications');
     }
 
     public function allapplications()
+    {
+        $applications = Application::where('student_id', auth()->user()->id)->get();
+        return view('students.all-applications', compact('applications'));
+    }
+    public function applicationdetails($id)
     {
         $applications = Application::where('student_id', auth()->user()->id)->get();
         return view('students.all-applications', compact('applications'));
@@ -185,12 +197,48 @@ class StudentAccountController extends Controller
         return redirect()->to('student/my-applications');
     }
 
-    public function applicationnotifications(){
+    public function applicationnotifications()
+    {
         $applications = Application::where('student_id', auth()->user()->id)->get();
         return view('students.application-notifications', compact('applications'));
     }
-    public function shortlistedapplicationnotifications(){
+    public function shortlistedapplicationnotifications()
+    {
         $applications = Application::where('student_id', auth()->user()->id)->get();
         return view('students.shortlisted-applications', compact('applications'));
+    }
+    public function acceptoffer($id)
+    {
+        $application = Application::findOrFail($id);
+        $application->application_status = "AcceptShortlist";
+        $application->save();
+
+        $job = Job::findOrFail($application->attachment_id);
+        $checkm = Company::findOrFail($application->company_id);
+        $manager = User::findOrFail($checkm->manager_id);
+        $message = "Hello, " . $application->applicationcompany->company_name . ". I accept the opportunity and it will be a pleasure being part of your amazing team.Regards." . auth()->user()->name . " - Applying for - " . $job->job_title;
+        $receiver = $manager->email;
+        $topic = "Attachment Accepted";
+
+        Mail::to($receiver)->send(new StudentResponse($receiver, $topic, $message));
+        Toastr::success('Application response has been received.', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+    }
+    public function rejectoffer($id)
+    {
+
+        $application = Application::findOrFail($id);
+        $application->application_status = "DenyShortlist";
+        $application->save();
+
+        $checkm = Company::findOrFail($application->company_id);
+        $manager = User::findOrFail($checkm->manager_id);
+        $message = "Hello, " . $application->applicationcompany->company_name . ". I Regret that i will not make it for the chance provided.Please reasign to someone else." . auth()->user()->name;
+        $receiver = $manager->email;
+        $topic = "Attachment Rejected";
+
+        Mail::to($receiver)->send(new StudentResponse($receiver, $topic, $message));
+        Toastr::error('Application response has been received.', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 }

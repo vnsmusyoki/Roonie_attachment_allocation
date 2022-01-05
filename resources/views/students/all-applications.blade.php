@@ -33,6 +33,13 @@
                                     <span class="badge badge-warning">Company - {{ $application->applicationcompany->company_name }}</span>
                                     <span class="badge badge-info">Company Location - {{ $application->applicationcompany->address }}</span>
                                 </p>
+                                <p>
+                                    @if ($application->application_status == "Shortlisted")
+                                    <a href="{{ url('student/accept-offer/'.$application->id)}}" class="badge badge-success">Accept Offer</a>
+                                    <a href="{{ url('student/reject-offer/'.$application->id)}}" class="badge badge-danger">Reject </a>
+                                    @endif
+
+
                                 </div>
                             </div>
                         @endforeach

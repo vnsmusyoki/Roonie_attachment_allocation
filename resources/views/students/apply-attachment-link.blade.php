@@ -61,70 +61,74 @@
             </div>
             <br>
             <hr>
-            <!-- Basic Forms -->
-            <div class="box jumbotron">
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col">
-                            <form action="{{ url('student/apply-attachment') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <h5>Attachment Letter<span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="file" name="attachment_letter"
-                                                    class="form-control @error('attachment_letter') is-invalid @enderror">
+            @if ($applications->count() == 0)
+                <div class="box jumbotron">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col">
+                                <form action="{{ url('student/apply-attachment') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <h5>Attachment Letter<span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="file" name="attachment_letter"
+                                                        class="form-control @error('attachment_letter') is-invalid @enderror">
+                                                </div>
+                                                @error('attachment_letter')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('attachment_letter')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <h5>Upload Your CV<span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="file" name="uploaded_cv"
-                                                    class="form-control @error('uploaded_cv') is-invalid @enderror">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <h5>Upload Your CV<span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="file" name="uploaded_cv"
+                                                        class="form-control @error('uploaded_cv') is-invalid @enderror">
+                                                </div>
+                                                @error('uploaded_cv')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('uploaded_cv')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <h5>Description</h5><span class="text-danger">*</span></h5>
-                                            <div class="controls">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <h5>Description</h5><span class="text-danger">*</span></h5>
+                                                <div class="controls">
 
-                                                <textarea name="description"
-                                                    class="form-control @error('description') is-invalid @enderror" id=""
-                                                    cols="30" rows="10"
-                                                    placeholder="Justify to us why you really need this attachment opportunity"></textarea>
+                                                    <textarea name="description"
+                                                        class="form-control @error('description') is-invalid @enderror"
+                                                        id="" cols="30" rows="10"
+                                                        placeholder="Justify to us why you really need this attachment opportunity"></textarea>
+                                                </div>
+                                                @error('description')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('description')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
+                                        <input type="hidden" name="attachmenttask" value="{{ $job->id }}">
                                     </div>
-                                    <input type="hidden" name="attachmenttask" value="{{ $job->id }}">
-                                </div>
 
-                                <div class="text-xs-right">
-                                    <button type="submit" class="btn btn-rounded btn-info">Submit Attachment
-                                        Application</button>
-                                </div>
-                            </form>
+                                    <div class="text-xs-right">
+                                        <button type="submit" class="btn btn-rounded btn-info">Submit Attachment
+                                            Application</button>
+                                    </div>
+                                </form>
 
+                            </div>
+                            <!-- /.col -->
                         </div>
-                        <!-- /.col -->
+                        <!-- /.row -->
                     </div>
-                    <!-- /.row -->
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-            </div>
+            @endif
+            <!-- Basic Forms -->
+
             <!-- /.box -->
         </section>
         <!-- /.content -->

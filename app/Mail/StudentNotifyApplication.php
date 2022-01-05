@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class StudentResponse extends Mailable
+class StudentNotifyApplication extends Mailable
 {
     public $topic, $message, $receiver;
     use Queueable, SerializesModels;
@@ -23,7 +23,6 @@ class StudentResponse extends Mailable
         $this->message = $message;
         $this->topic = $topic;
     }
-
     /**
      * Build the message.
      *
@@ -31,6 +30,6 @@ class StudentResponse extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.StudentResponse')->subject('Application Response from Student');
+        return $this->markdown('emails.StudentNotifyApplication')->subject('Application has been received');
     }
 }
