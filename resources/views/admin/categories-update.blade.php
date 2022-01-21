@@ -1,20 +1,8 @@
-@extends('admin.main')
+@extends('admin.layout')
 
-@section('main')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+@section('content')
+
     <div class="container-full">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="mr-auto">
-                    <h3 class="page-title">Update Category Name</h3>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Main content -->
         <section class="content">
 
             <!-- Basic Forms -->
@@ -47,10 +35,15 @@
                             </form>
 
                         </div>
+                        <!-- /.col -->
                     </div>
+                    <!-- /.row -->
                 </div>
+                <!-- /.box-body -->
             </div>
+            <!-- /.box -->
+
         </section>
+        <!-- /.content -->
     </div>
-</div>
 @endsection

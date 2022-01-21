@@ -5,7 +5,7 @@
     <section class="page-title">
         <div class="auto-container">
             <div class="title-outer">
-                <h1>Find Jobs</h1>
+                <h1>Find Attachment Positions</h1>
                 <ul class="page-breadcrumb">
                     <li><a href="{{ url('/') }}">Home</a></li>
                     <li>Attachment Slots</li>
@@ -39,7 +39,7 @@
                                         </h4>
                                         <ul class="job-info">
                                             <li><span class="icon flaticon-briefcase"></span> Job
-                                                Category:{{ $job->job_category }}</li> 
+                                                Category:{{ $job->job_category }}</li>
                                             {{-- <li><span class="icon flaticon-clock-3"></span> 11 hours ago</li> --}}
                                             <li><span class="icon flaticon-money"></span> Salary:
                                                 {{ $job->appreciation_token }}</li>

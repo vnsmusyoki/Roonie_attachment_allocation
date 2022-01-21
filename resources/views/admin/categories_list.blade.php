@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container-full">
 		<!-- Main content -->
-    
+
 		<section class="content">
 
 			<div class="row">
@@ -40,6 +40,15 @@
 												 <td>
 													<a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
 												 </td>
+                                                 {{-- <h5>Edit Category<span class="text-danger">*</span></h5>
+                                                 <div class="controls">
+                                                     <input type="text" name="courses" name="text"
+                                                         class="form-control @error('category') is-invalid @enderror" value="{{ $category->category }}">
+                                                 </div>
+                                                 @error('category')
+                                                     <div class="alert alert-danger">{{ $message }}</div>
+                                                 @enderror
+                                             </div> --}}
 												 <td>
 
 													<form action="{{ route('category.destroy', $category->id)}}" method="post">

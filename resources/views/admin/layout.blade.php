@@ -59,7 +59,7 @@
                         <li class="btn-group nav-item d-lg-flex d-none align-items-center">
                             <p class="mb-0 text-fade pr-10 pt-5">
                                 {{ Carbon\Carbon::now()->addHours(3)->format('l, d-m-y
-                                                                                                                                h:i:s a') }}
+                                                                                                                                                                h:i:s a') }}
                             </p>
                         </li>
                         <li class="btn-group nav-item d-lg-inline-flex d-none">
@@ -168,7 +168,7 @@
 
 
 
-                     
+
                     <li>
 
 

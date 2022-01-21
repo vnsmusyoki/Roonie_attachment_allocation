@@ -13,31 +13,7 @@
                             <div class="text">Find Attachment opportunities here</div>
                         </div>
 
-                        <!-- Job Search Form -->
-                        <div class="job-search-form">
-                            <form method="post" action="">
-                                <div class="row">
-                                    <div class="form-group col-lg-5 col-md-12 col-sm-12">
-                                        <span class="icon flaticon-search-1"></span>
 
-                                        <select name="" id="" >
-                                            <option value="">select</option>
-                                            <option value="">Course 1</option>
-                                        </select>
-                                    </div>
-                                    <!-- Form Group -->
-                                    <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
-                                        <span class="icon flaticon-map-locator"></span>
-                                        <input type="text" name="field_name" placeholder="City or postcode">
-                                    </div>
-                                    <!-- Form Group -->
-                                    <div class="form-group col-lg-3 col-md-12 col-sm-12 btn-box">
-                                        <button type="submit" class="theme-btn btn-style-one"><span class="btn-title">Find Attachment</span></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Job Search Form -->
 
                         <!-- Popular Search -->
                         <div class="popular-searches">
@@ -104,7 +80,7 @@
                     <div class="job-block col-lg-6 col-md-12 col-sm-12">
                         <div class="inner-box">
                             <div class="content">
-                                <span class="company-logo"><img src="{{asset('storage/companylogos/'.$job->image)}}" alt="" width="54" height="53"></span>
+                               
                                 <h4><a href="{{route('job-single-page',$job->id)}}">{{$job->job_title}}</a></h4>
                                 <ul class="job-info">
                                     <li><span class="icon flaticon-briefcase"></span> Category:{{$job->job_category}}</li>

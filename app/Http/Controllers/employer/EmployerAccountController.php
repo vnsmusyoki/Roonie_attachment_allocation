@@ -343,30 +343,7 @@ class EmployerAccountController extends Controller
         $receiver = $attachment->applicationstudent->email;
         $topic = "Your Application has been accepted";
         Mail::to($receiver)->send(new StudentNotifyApplication($receiver, $topic, $message));
-        // $slots = $opportunity->slots_needed;
-        // if ($slots == 1) {
-        //     $attachment->application_status = "Shortlisted";
-        //     $attachment->save();
-        //     $opportunity->slots_needed = $slots - 1;
-        //     $opportunity->application_status = "Closed";
-        //     $opportunity->save();
 
-        //     Toastr::success('Student has been shortlisted.', 'Success', ["positionClass" => "toast-top-right"]);
-        //     return redirect('employer/short-listed-applicants');
-        // } else if ($slots > 1) {
-
-        // } else {
-        //     $closeattachments = Application::where('attachment_id', $opportunity->id)->where('application_status', '!=', 'Shortlisted')->get();
-        //     foreach ($closeattachments as $closeattachment) {
-        //         $closeattachment->application_status = "Closed";
-        //         $closeattachment->save();
-        //     }
-        //     $opportunity->application_status = "Closed";
-        //     $opportunity->save();
-
-        //     Toastr::error('Your Application is already closed.', 'Success', ["positionClass" => "toast-top-right"]);
-        //     return redirect('employer/manage-closed-attachment-slots');
-        // }
         Toastr::success('Student has been shortlisted and email sent waiting for response.', 'Success', ["positionClass" => "toast-top-right"]);
 
         return redirect('employer/manage-closed-attachment-slots');
@@ -410,19 +387,19 @@ class EmployerAccountController extends Controller
     {
         return view('companies.account-settings');
     }
-    public function closeapplications($id){
+    public function closeapplications($id)
+    {
         $opportunity = Job::findOrFail($id);
-        $applications = Application::where(['attachment_id'=>$id, 'application_status'=>'Waiting'])->get();
+        $applications = Application::where(['attachment_id' => $id, 'application_status' => 'Waiting'])->get();
 
-        foreach($applications as $application){
+        foreach ($applications as $application) {
             $application->application_status = "closed";
             $application->save();
 
             $receiver = $application->applicationstudent->email;
             $topic = "Attachment has been closed";
-            $message = $opportunity->job_title ."You had recently applied has been closed.Please select other opportunities that are active for future consideration.";
-            Mail::to($receiver)->send(new CompanyCloseTask($receiver, $topic,$message));
-
+            $message = $opportunity->job_title . "You had recently applied has been closed.Please select other opportunities that are active for future consideration.";
+            Mail::to($receiver)->send(new CompanyCloseTask($receiver, $topic, $message));
         }
 
         $opportunity->attachment_status = "Closed";
@@ -430,6 +407,5 @@ class EmployerAccountController extends Controller
 
         Toastr::error('Attachment slot has been closed and wont be visible from the website', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect('employer/manage-closed-attachment-slots');
-
     }
 }

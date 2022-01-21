@@ -16,7 +16,7 @@ class ContentCOntroller extends Controller
 
     public function index()
     {
-        return view('admin.dashboard');
+        return redirect()->route('category.index');
     }
     public function allcourses()
     {

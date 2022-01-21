@@ -63,7 +63,7 @@
                         class="btn btn-sm btn-block btn-info" download="">{{ $attachment->uploaded_cv }}</a>
                     <hr>
                     <p><span class="text-danger">Attachment Letter</span></p>
-                    <a href="{{ asset('storage/attachment_letter/' . $attachment->attachmentletters) }}"
+                    <a href="{{ asset('storage/attachmentletters/' . $attachment->attachment_letter) }}"
                         class="btn btn-sm btn-block btn-primary" download="">{{ $attachment->attachment_letter }}</a>
                     <hr>
                     <a href="{{ url('employer/accept-student-application/' . $attachment->id) }}"
